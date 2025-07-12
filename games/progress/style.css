@@ -1,0 +1,17 @@
+.projects {
+  padding: 20px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.projectCard {
+  min-width: 400px;
+  height: 600px;
+  border: 4px solid white;
+}
+
+.projectCard h3 {
+  text-align: center;
+}

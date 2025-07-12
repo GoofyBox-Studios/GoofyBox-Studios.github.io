@@ -1,0 +1,13 @@
+#canvas {
+  position: fixed;
+  top:    50vh;
+  left:   50vw;
+  width:  100vw;
+  height: 75vw;
+  max-width: 133.33333vh;
+  max-height: 100vh;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: #114343;
+  image-rendering: pixelated;
+  border: calc(min(6.25vw, 8.333333125vh) / 8) solid black;
+}

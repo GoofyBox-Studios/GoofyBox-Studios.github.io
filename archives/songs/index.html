@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="icon" type="image/png" sizes="48x48" href="https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/IconArchives5.png?v=1715661978166">
+
+    <title>GoofyBox - Music Archive</title>
+    
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/songs/style.css">
+    <link rel="stylesheet" href="/archives/style.css">
+    
+    <script src="/global.js" defer></script>
+    <script src="/songs/songs.js" defer></script>
+    <script src="/songs/player.js" defer></script>
+    <script src="/songs/script.js" defer></script>
+    
+    <script src="/archives/archives.js"></script>
+  </head>
+  <body>
+    <img class="mainLogo" src="https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/LOGO-7.png?v=1715664586003" alt="GoofyBox Studios Archives Logo" draggable="false">
+<!--     <img class="mainLogo" src="https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/LogoPurple.png?v=1715739655915" alt="GoofyBox Studios Logo" draggable="false"> -->
+
+    <p class="legal">
+      This music is licensed under the<br><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>
+    </p>
+    
+    <div class="content">
+      <h1>Song Archives</h1>
+
+      <div class="cardContainer">
+<!--         <div class="card" id="testyGroup">
+          <div class="cardTitle">TESTY STUFFS</div>
+        </div> -->
+        <div class="card" id="goofyGroup">
+          <div class="cardTitle">GOOFY BALLADS</div>
+        </div>
+        <div class="card" id="spicyGroup">
+          <div class="cardTitle">SPICY SONGS</div>
+        </div>
+        <div class="card" id="sugaryGroup">
+          <div class="cardTitle">SUGARY SHANTIES</div>
+        </div>
+        <div class="card" id="upperSaltGroup">
+          <div class="cardTitle">UPPER SALT</div>
+        </div>
+        <div class="card" id="lowerSaltGroup">
+          <div class="cardTitle">LOWER SALT</div>
+        </div>
+        <div class="card" id="sourGroup">
+          <div class="cardTitle">SOUR TRACKS</div>
+        </div>
+        <div class="card" id="sortableGroup">
+          <div class="cardTitle">SORTABLE BARS</div>
+        </div>
+<!--         <div class="card" id="staleGroup">
+          <div class="cardTitle">STALE SOMETHINGS</div>
+        </div> -->
+        <div class="card" id="remixGroup">
+          <div class="cardTitle">REMIX SONGS</div>
+        </div>
+      </div>
+      <section class="remixes">
+        <h2>
+          Song Files
+        </h2>
+        <div>Bombastic Symphony</div> <audio src="https://cdn.glitch.me/cfe14639-265a-43cf-81e0-5d469823940c/Detailed%20Bombastic%20Melody.wav?v=1694136609787" controls></audio><br>
+        <div>Open Minded</div> <audio src="https://cdn.glitch.me/cfe14639-265a-43cf-81e0-5d469823940c/Open%20Minded.wav?v=1698681964701" controls></audio> <a href="https://cdn.glitch.global/cfe14639-265a-43cf-81e0-5d469823940c/Open%20Minded.mid?v=1698681921136" class="save">Midi version</a>
+      </section>
+      <br><br><br>
+      <button id="random">
+        Random Song
+      </button>
+
+      <iframe src="/empty/"></iframe>
+      <br><br><br><br><br><br><br><br><br><br>
+
+      <div class="musicPlayer" id="musicPlayerElement">
+        <div id="playerProgress">
+          <div id="playerProgressValue"></div>
+        </div>
+        <img id="playerPrev" src="https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/SongPrev.png?v=1714190932705" alt="previous song" draggable="false">
+        <img id="playerPlay" src="https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Paused.png?v=1714190931616" alt="play/pause song" draggable="false">
+        <img id="playerNext" src="https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/SongNext.png?v=1714190932435" alt="next song" draggable="false">
+        <img id="playerLoop" src="https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/LoopOn.png?v=1714198791243" alt="loop song" draggable="false">
+        <div id="playerState">Nothing Playing</div>
+        <img id="playerEdit" src="https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Music.png?v=1714190931271" alt="edit song" draggable="false">
+      </div>
+    </div>
+  </body>
+</html>

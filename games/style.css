@@ -1,0 +1,82 @@
+body {
+  background: linear-gradient(#147044, #19143e);
+}
+
+a {
+  color: red;
+}
+
+a:active {
+  color: orange;
+}
+
+.legal {
+  width: calc(100vw - 80px);
+  text-align: center;
+  line-height: 50px;
+}
+
+h1 {
+  width: 100vw;
+  text-align: center;
+  font-size: 50px;
+}
+
+.games {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.game {
+  min-width: 200px;
+  max-width: 20vw;
+  
+  border-width: 30px;
+  border-style: solid;
+  border-image: url(https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/CardEmpty.png?v=1714248836653);
+  border-image-slice: 15 11 10 11 fill;
+  border-image-repeat: repeat;
+  border-image-width: 150px 110px 100px 110px;
+  image-rendering: pixelated;
+  
+  text-align: center;
+  color: black;
+  user-select: none;
+  
+  cursor: pointer;
+  
+  transition: transform 0.25s;
+  
+  filter: sepia(100%) hue-rotate(70deg) saturate(120%);
+}
+
+.game:hover {
+  transform: translate(0, 10px);
+}
+
+.game:active {
+  transform: translate(0, 15px);
+}
+
+.gameTitle {
+  margin-bottom: 20px;
+  color: white;
+  font-size: 1.5em;
+  
+  transition: color 0.25s;
+}
+
+.game:hover .gameTitle {
+  color: #ffff99;
+}
+
+hr {
+  border-style: solid;
+  border-color: #147044;
+  border-width: 4px;
+  margin-left: 80px;
+  margin-right: 80px;
+}
