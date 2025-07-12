@@ -1,108 +1,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 
 body {
-  background-color: black;
-  background: url(https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/ShapeOfBalance%20Title.png?v=1724522028694);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-  background-attachment: fixed;
-  
-  padding-bottom: 40px;
-  
-  cursor: none !important;
+	background-color: black;
+	background: url(/assets/shape_of_balance/Title.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 0;
+	background-attachment: fixed;
+	
+	padding-bottom: 40px;
+	
+	cursor: none !important;
 }
 
 .content {
-  position: absolute;
-  left: 50%;
-  top: 0px;
-  transform: translate(-50%, 0px);
-  
-  width: auto;
-  max-width: 960px;
-  min-height: 903px;
-  
-  border: none;
-  border-radius: 10px;
-  
-  font-size: 19px;
-  font-family: Comfortaa, Lato, LatoExtended, sans-serif;
-  
-  background-color: rgba(7, 32, 38, 0.57);
-  
-  backdrop-filter: blur(10px) brightness(80%);
+	position: absolute;
+	left: 50%;
+	top: 0px;
+	transform: translate(-50%, 0px);
+	
+	width: auto;
+	max-width: 960px;
+	min-height: 903px;
+	
+	border: none;
+	border-radius: 10px;
+	
+	font-size: 19px;
+	font-family: Comfortaa, Lato, LatoExtended, sans-serif;
+	
+	background-color: rgba(7, 32, 38, 0.57);
+	
+	backdrop-filter: blur(10px) brightness(80%);
 }
 
 .banner {
-  width: 100%;
+	width: 100%;
 }
 
 .widget {
-  width: 100%;
+	width: 100%;
 }
 
 .embed {
-  width: 640px;
-  height: 360px;
-  background: #1d363c;
-  background-image: url(https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/ShapeOfBalance%20Embed%20Background.png?v=1724522423201);
-  margin: 0 auto;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  border-radius: 10px;
+	width: 640px;
+	height: 360px;
+	background: #1d363c;
+	background-image: url(/assets/shape_of_balance/Embed.png);
+	margin: 0 auto;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	border-radius: 10px;
 }
 
 .embed button {
-  font-family: Comfortaa, Lato, LatoExtended, sans-serif;
-  background-color: #009218;
-  color: white;
-  text-shadow: 0 1px 0px #18aa30;
-  
-  height: auto;
-  padding: 0.4em 0.8em;
-  font-size: 120%;
-  display: flex;
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  
-  cursor: none;
-  
-  outline: none;
-  
-  position: relative;
-  
-  transform: scale(1.0);
-  transition: transform 0.1s;
+	font-family: Comfortaa, Lato, LatoExtended, sans-serif;
+	background-color: #009218;
+	color: white;
+	text-shadow: 0 1px 0px #18aa30;
+	
+	height: auto;
+	padding: 0.4em 0.8em;
+	font-size: 120%;
+	display: flex;
+	align-items: center;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 6px;
+	
+	cursor: none;
+	
+	outline: none;
+	
+	position: relative;
+	
+	transform: scale(1.0);
+	transition: transform 0.1s;
 }
 
 .embed button:hover {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .embed button:active {
-  top: 1px;
-  
-  transform: scale(0.9);
+	top: 1px;
+	
+	transform: scale(0.9);
 }
 
 .embed button img {
-  width: 200px;
-  filter: invert(1);
+	width: 200px;
+	filter: invert(1);
 }
 
 .description {
-  padding: 20px;
+	padding: 20px;
 }
 
 .sticker {
-  background: transparent;
-  
-  cursor: none;
+	background: transparent;
+	
+	cursor: none;
 }
 
 .sticker.held {
@@ -113,19 +113,19 @@ body {
 
 /* custom mouse cursor */
 #customMouse {
-  display: none;
-  position: fixed;
-  pointer-events: none;
-  z-index: 200;
+	display: none;
+	position: fixed;
+	pointer-events: none;
+	z-index: 200;
 }
 
 #customMouse img {
-  width: 45px;
-  position: absolute;
-  left: -12px;
-  top: -11px;
+	width: 45px;
+	position: absolute;
+	left: -12px;
+	top: -11px;
 }
 
 *, .sidebarIcon {
-  cursor: none !important;
+	cursor: none !important;
 }

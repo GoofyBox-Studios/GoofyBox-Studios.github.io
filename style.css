@@ -1,22 +1,22 @@
 .about {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 100px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 100px;
 }
 
 .aboutIcon {
-  background: url(https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Cookie.png?v=1714190930928);
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  left: 50%;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 15px;
-  transform: translate(-50%, 0);
-  image-rendering: pixelated;
+	background: url(/assets/main/Cookie.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	left: 50%;
+	width: 200px;
+	height: 200px;
+	margin-bottom: 15px;
+	transform: translate(-50%, 0);
+	image-rendering: pixelated;
 }
 
 .siteLink p {
-  text-align: center;
+	text-align: center;
 }

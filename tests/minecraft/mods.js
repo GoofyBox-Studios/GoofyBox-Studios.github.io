@@ -3,7 +3,7 @@ const MODS = [
     "mod_id": "allay_elytra",
     "mod_name": "Allay Elytra",
     "mod_description": "Changes Elytra to look like Allay wings",
-    "mod_icon": "https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Cookie.png?v=1714190930928",
+    "mod_icon": "/assets/main/Cookie.png",
     "incompatibilities": [
       "dragon_elytra",
       "phantom_elytra",
@@ -31,7 +31,7 @@ const MODS = [
     "mod_id": "dragon_elytra",
     "mod_name": "Dragon Elytra",
     "mod_description": "Changes Elytra to look like the Ender Dragon's wings",
-    "mod_icon": "https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Cookie.png?v=1714190930928",
+    "mod_icon": "/assets/main/Cookie.png",
     "incompatibilities": [
       "allay_elytra",
       "phantom_elytra",
@@ -42,7 +42,7 @@ const MODS = [
     "mod_id": "phantom_elytra",
     "mod_name": "Phantom Elytra",
     "mod_description": "Changes Elytra to look like Phantom wings",
-    "mod_icon": "https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Cookie.png?v=1714190930928",
+    "mod_icon": "/assets/main/Cookie.png",
     "incompatibilities": [
       "dragon_elytra",
       "allay_elytra",
@@ -53,7 +53,7 @@ const MODS = [
     "mod_id": "vex_elytra",
     "mod_name": "Vex Elytra",
     "mod_description": "Changes Elytra to look like a Vex's wings",
-    "mod_icon": "https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Cookie.png?v=1714190930928",
+    "mod_icon": "/assets/main/Cookie.png",
     "incompatibilities": [
       "allay_elytra",
       "phantom_elytra",
