@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+@import url("/assets/fonts/comfortaa.css");
 
 body {
 	background-color: black;
@@ -8,7 +8,7 @@ body {
 	background-position: 50% 0;
 	background-attachment: fixed;
 	
-	padding-bottom: 40px;
+	padding: 40px;
 	
 	cursor: none !important;
 }
@@ -20,8 +20,10 @@ body {
 	transform: translate(-50%, 0px);
 	
 	width: auto;
-	max-width: 960px;
+	max-width: 75%;
 	min-height: 903px;
+	padding-left: 40px;
+	padding-right: 40px;
 	
 	border: none;
 	border-radius: 10px;

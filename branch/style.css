@@ -1,34 +1,34 @@
 body {
-  background: black;
+	background: black;
 }
 
 canvas {
-  position: fixed;
-  left: 0;
-  top: 0;
-  
-  width: 50vw;
-  height: 100vh;
-  background: white;
+	position: fixed;
+	left: 0;
+	top: 0;
+	
+	width: 50vw;
+	height: 100vh;
+	background: white;
 }
 
 #songs {
-  position: fixed;
-  left: 0;
-  top: 0;
+	position: fixed;
+	left: 0;
+	top: 0;
 }
 
 .right {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 50vw;
-  height: 100vh;
-  background: #220000;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 50vw;
+	height: 100vh;
+	background: #220000;
 }
 
 iframe {
-  width: 50vw;
-  height: 50vh;
-  border: none;
+	width: 50vw;
+	height: 50vh;
+	border: none;
 }

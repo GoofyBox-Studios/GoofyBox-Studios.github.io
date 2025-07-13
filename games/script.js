@@ -17,8 +17,8 @@ for (let game of games) {
 	element.appendChild(description);
 
 	element.onclick = function () {
-        window.open(game.link, "_blank");
-	}
+		window.open(game.link, "_blank");
+	};
 
 	const parentElement = game.isArchived ? archivedGamesElement : gamesElement;
 	parentElement.appendChild(element);
