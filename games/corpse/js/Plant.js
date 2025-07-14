@@ -5,11 +5,9 @@ function Plant(x, y) {
 	this.animations = {
 		idle: [
 			[80, 0],
-			[112, 64]
+			[112, 64],
 		],
-		mouth: [
-			[80, 32],
-		],
+		mouth: [[80, 32]],
 		chomp: [
 			[112, 32],
 			[80, 64],
@@ -34,7 +32,7 @@ function Plant(x, y) {
 			[64, 128],
 			[96, 128],
 			[128, 128],
-		]
+		],
 	};
 	this.speeds = {
 		idle: 0.05,
@@ -46,16 +44,14 @@ function Plant(x, y) {
 	this.frame = 0;
 	this.animation = "idle";
 
-	this.animationDone = function() {
+	this.animationDone = function () {};
 
-	};
-
-	this.draw = function() {
+	this.draw = function () {
 		let uv = this.animations[this.animation][Math.floor(this.frame)];
 		ctx.drawImage(images.player, uv[0], uv[1], 32, 32, this.position.x, this.position.y, 32, 32);
-  };
-  
-	this.update = function() {
+	};
+
+	this.update = function () {
 		this.frame += this.speeds[this.animation];
 		if (this.frame >= this.animations[this.animation].length) {
 			this.frame -= this.animations[this.animation].length;
@@ -74,16 +70,16 @@ function Plant(x, y) {
 			player.kill(true);
 			this.frame = 0;
 			this.animation = "chomp";
-			this.animationDone = function() {
+			this.animationDone = function () {
 				this.frame = 0;
 				this.animation = "chew";
-				this.animationDone = function() {
+				this.animationDone = function () {
 					this.frame = 0;
 					this.animation = "swallow";
-					this.animationDone = function() {
+					this.animationDone = function () {
 						this.frame = 0;
 						this.animation = "idle";
-						this.animationDone = function() {};
+						this.animationDone = function () {};
 					};
 				};
 			};

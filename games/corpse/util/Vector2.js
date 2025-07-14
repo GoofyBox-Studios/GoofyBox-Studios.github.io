@@ -1,5 +1,3 @@
-/* global Utils */
-
 class Vector2 {
 	constructor(x, y) {
 		if (typeof x == "object") {
@@ -10,11 +8,15 @@ class Vector2 {
 			this.y = y ?? 0;
 		}
 	}
-  
-  get isVector() { return true; }
-  get isVector2() { return true; }
 
-// Setting
+	get isVector() {
+		return true;
+	}
+	get isVector2() {
+		return true;
+	}
+
+	// Setting
 	set(x, y) {
 		this.x = x ?? 0;
 		this.y = y ?? 0;
@@ -34,7 +36,7 @@ class Vector2 {
 		return this;
 	}
 
-// Standard
+	// Standard
 	add(vector) {
 		this.x += vector.x;
 		this.y += vector.y;
@@ -63,7 +65,7 @@ class Vector2 {
 		return this;
 	}
 
-// Scalars
+	// Scalars
 	multiplyScalar(scalar) {
 		this.x *= scalar;
 		this.y *= scalar;
@@ -85,7 +87,7 @@ class Vector2 {
 		return this;
 	}
 
-// Scaled
+	// Scaled
 	subtractScaledVector(vector, scale) {
 		this.x -= vector.x * scale;
 		this.y -= vector.y * scale;
@@ -93,54 +95,36 @@ class Vector2 {
 		return this;
 	}
 
-// New Vector
+	// New Vector
 	added(vector) {
-		return new Vector2(
-			this.x + vector.x,
-			this.y + vector.y,
-		);
+		return new Vector2(this.x + vector.x, this.y + vector.y);
 	}
 
 	subtracted(vector) {
-		return new Vector2(
-			this.x - vector.x,
-			this.y - vector.y,
-		);
+		return new Vector2(this.x - vector.x, this.y - vector.y);
 	}
 
-// New Vector Values
+	// New Vector Values
 	addedValues(x, y) {
-		return new Vector2(
-			this.x + x,
-			this.y + y,
-		);
+		return new Vector2(this.x + x, this.y + y);
 	}
 
 	subtractedValues(x, y) {
-		return new Vector2(
-			this.x - x,
-			this.y - y,
-		);
+		return new Vector2(this.x - x, this.y - y);
 	}
 
-// New Vector Scalar
+	// New Vector Scalar
 	multipliedScalar(scalar) {
-		return new Vector2(
-			this.x * scalar,
-			this.y * scalar,
-		);
+		return new Vector2(this.x * scalar, this.y * scalar);
 	}
 
 	dividedScalar(scalar) {
 		if (scalar == 0) return new Vector2(0, 0);
 
-		return new Vector2(
-			this.x / scalar,
-			this.y / scalar,
-		);
+		return new Vector2(this.x / scalar, this.y / scalar);
 	}
 
-// New Vector Scaled
+	// New Vector Scaled
 	addScaledVector(vector, scale) {
 		this.x += vector.x * scale;
 		this.y += vector.y * scale;
@@ -148,7 +132,7 @@ class Vector2 {
 		return this;
 	}
 
-// Math
+	// Math
 	normalize() {
 		return this.setLength(1);
 	}
@@ -158,10 +142,7 @@ class Vector2 {
 
 		if (length == 0) return new Vector2(0, 0);
 
-		return new Vector2(
-			this.x / length,
-			this.y / length,
-		);
+		return new Vector2(this.x / length, this.y / length);
 	}
 
 	distanceTo(vector) {
@@ -202,8 +183,8 @@ class Vector2 {
 
 		if (length == 0) return;
 
-		this.x = this.x / length * toLength;
-		this.y = this.y / length * toLength;
+		this.x = (this.x / length) * toLength;
+		this.y = (this.y / length) * toLength;
 
 		return this;
 	}
@@ -221,8 +202,7 @@ class Vector2 {
 		return new Vector2(this.x, this.y);
 	}
 
-
-// Math
+	// Math
 	floor() {
 		this.x = Math.floor(this.x);
 		this.y = Math.floor(this.y);
@@ -244,33 +224,24 @@ class Vector2 {
 		return this;
 	}
 
-// Math (New Vector)
+	// Math (New Vector)
 	floored() {
-		return new Vector2(
-			Math.floor(this.x),
-			Math.floor(this.y),
-		);
+		return new Vector2(Math.floor(this.x), Math.floor(this.y));
 	}
 
 	ceiled() {
-		return new Vector2(
-			Math.ceil(this.x),
-			Math.ceil(this.y),
-		);
+		return new Vector2(Math.ceil(this.x), Math.ceil(this.y));
 	}
 
 	rounded() {
-		return new Vector2(
-			Math.round(this.x),
-			Math.round(this.y),
-		);
+		return new Vector2(Math.round(this.x), Math.round(this.y));
 	}
 }
 
-Vector2.UP    = new Vector2( 0, -1);
-Vector2.DOWN  = new Vector2( 0,  1);
-Vector2.RIGHT = new Vector2( 1,  0);
-Vector2.LEFT  = new Vector2(-1,  0);
+Vector2.UP = new Vector2(0, -1);
+Vector2.DOWN = new Vector2(0, 1);
+Vector2.RIGHT = new Vector2(1, 0);
+Vector2.LEFT = new Vector2(-1, 0);
 
 Vector2.from = function (vector) {
 	return new Vector2(vector?.x, vector?.y);

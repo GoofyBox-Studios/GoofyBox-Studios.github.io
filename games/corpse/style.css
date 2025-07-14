@@ -1,27 +1,27 @@
 body {
-  margin: 0px;
-  overflow: hidden;
-  background: black;
+	margin: 0px;
+	overflow: hidden;
+	background: black;
 }
 
 canvas {
-  background: black;
-  position: fixed;
-  left: 50vw;
-  top: 50vh;
-  
-  width: 100vw;
-  height: 93.75vw;
-  
-  max-width: 106.666667vh;
-  max-height: 100vh;
-  
-  transform: translate(-50%, -50%);
-  
-  image-rendering: pixelated;
+	background: black;
+	position: fixed;
+	left: 50vw;
+	top: 50vh;
+
+	width: 100vw;
+	height: 93.75vw;
+
+	max-width: 106.666667vh;
+	max-height: 100vh;
+
+	transform: translate(-50%, -50%);
+
+	image-rendering: pixelated;
 }
 
 @font-face {
-  src: url(https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Font.ttf?v=1715456219452);
-  font-family: Pixel;
+	src: url(https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Font.ttf?v=1715456219452);
+	font-family: Pixel;
 }

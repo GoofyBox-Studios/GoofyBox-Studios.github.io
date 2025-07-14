@@ -20,11 +20,11 @@ const Utils = {
 		let max = 0;
 		if (b) {
 			min = a;
-			max = b
+			max = b;
 		} else {
 			max = a;
 		}
-		return (Math.random() * (max - min)) + min;
+		return Math.random() * (max - min) + min;
 	},
 
 	mod: function (a, b) {
@@ -43,14 +43,14 @@ const Utils = {
 	},
 
 	average: function () {
-		return ([...arguments].reduce((a, b) => a + b, 0)) / arguments.length;
+		return [...arguments].reduce((a, b) => a + b, 0) / arguments.length;
 	},
-  
-  roundTo: function (value, nearest) {
-    return Math.round(value / nearest) * nearest;
-  },
-  
-  floorTo: function (value, nearest) {
-    return Math.floor(value / nearest) * nearest;
-  }
+
+	roundTo: function (value, nearest) {
+		return Math.round(value / nearest) * nearest;
+	},
+
+	floorTo: function (value, nearest) {
+		return Math.floor(value / nearest) * nearest;
+	},
 };

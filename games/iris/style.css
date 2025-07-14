@@ -1,27 +1,27 @@
 body {
-    background: black;
+	background: black;
 }
 
 .content {
 	background: #333333;
-	
+
 	min-width: 200px;
 	max-width: 75vw;
 	height: 1000px;
-	
+
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 0px;
 	margin-bottom: 30px;
-	
+
 	padding-top: 10px;
 	padding-bottom: 80px;
 	padding-left: 100px;
 	padding-right: 100px;
 	box-sizing: border-box;
-	
+
 	text-wrap: balance;
-	
+
 	border: none;
 	border-radius: 5px;
 }
@@ -29,11 +29,11 @@ body {
 .header {
 	text-align: center;
 	background: url(/assets/iris/Palette0.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-	
+	background-position: center center;
+	background-repeat: no-repeat;
+
 	border-radius: 5px;
-	
+
 	min-width: 200px;
 	max-width: 75vw;
 	margin-left: auto;
@@ -45,22 +45,19 @@ h1 {
 	font-family: "Raleway", sans-serif;
 	font-weight: 500;
 	font-size: 300px;
-	
+
 	margin-top: 10px;
 	margin-bottom: 10px;
 	backdrop-filter: blur(2px) contrast(115%) saturate(115%);
-	text-shadow:
-	     0px  0px 20px white,
-		-5px  5px      magenta,
-		 5px -5px      cyan;
+	text-shadow: 0px 0px 20px white, -5px 5px magenta, 5px -5px cyan;
 }
 
 h1 a {
 	color: white;
 	text-decoration: none;
-	
+
 	cursor: default;
-	
+
 	user-select: none;
 }
 
@@ -73,8 +70,8 @@ p {
 
 ul {
 	padding-left: 0;
-    list-style-position: inside;
-	
+	list-style-position: inside;
+
 	margin-top: 100px;
 	margin-bottom: 150px;
 }
@@ -82,27 +79,26 @@ ul {
 li {
 	text-align: center;
 	margin-bottom: 20px;
-	
+
 	color: var(--colour);
 	font-size: 30px;
-	
+
 	transition: color 0.25s;
 }
 
 li a {
 	text-decoration: none;
 	cursor: default;
-	
+
 	color: var(--colour);
 	font-size: 20px;
-	
+
 	transition: color 0.25s;
 }
 
 li:hover {
 	color: white;
 }
-
 
 li:hover a {
 	color: white;

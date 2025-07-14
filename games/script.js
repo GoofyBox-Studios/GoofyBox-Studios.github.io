@@ -1,5 +1,3 @@
-/* global games gamesElement archivedGamesElement */
-
 for (let game of games) {
 	if (game.disabled) continue;
 	if (game.isArchived && typeof archivedGamesElement == "undefined") continue;

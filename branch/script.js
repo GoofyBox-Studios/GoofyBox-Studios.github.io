@@ -1,5 +1,3 @@
-/* global Input player */
-
 const canvas = document.getElementById("canvas");
 canvas.width  = window.innerWidth / 2;
 canvas.height = window.innerHeight;

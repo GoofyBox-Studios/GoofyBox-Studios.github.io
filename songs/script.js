@@ -1,5 +1,3 @@
-/* global random songs spicyGroup sugaryGroup upperSaltGroup lowerSaltGroup sourGroup sortableGroup staleGroup goofyGroup musicPlayer */
-
 const iframe = document.querySelector("iframe");
 
 for (let audio of [...document.querySelectorAll("audio")]) {
@@ -26,30 +24,32 @@ const groups = {
 let currentlyPlaying = null;
 
 const songElements = [];
-for (let songGroupName in songs) {
-	const group = groups[songGroupName];
-	
-	if (!group) continue;
-	
-	for (let songName in songs[songGroupName]) {
-		const songUrl = songs[songGroupName][songName];
+function songsLoaded() {
+	for (let songGroupName in songs) {
+		const group = groups[songGroupName];
 		
-		const element = document.createElement("div");
-		element.innerText = songName;
-		element.classList.add("song");
-		element.onclick = function (event) {
-			event.preventDefault();
-			
-			if (currentlyPlaying) currentlyPlaying.classList.remove("playing");
-			
-			currentlyPlaying = element;
-			currentlyPlaying.classList.add("playing");
-			
-			musicPlayer.playSong(songUrl, songName, songGroupName);
-		};
+		if (!group) continue;
 		
-		songElements.push(element);
-		group.appendChild(element);
+		for (let songName in songs[songGroupName]) {
+			const songUrl = songs[songGroupName][songName];
+			
+			const element = document.createElement("div");
+			element.innerText = songName;
+			element.classList.add("song");
+			element.onclick = function (event) {
+				event.preventDefault();
+				
+				if (currentlyPlaying) currentlyPlaying.classList.remove("playing");
+				
+				currentlyPlaying = element;
+				currentlyPlaying.classList.add("playing");
+				
+				musicPlayer.playSong(songUrl, songName, songGroupName);
+			};
+			
+			songElements.push(element);
+			group.appendChild(element);
+		}
 	}
 }
 

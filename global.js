@@ -2,18 +2,18 @@ class Signaler {
 	constructor() {
 		this._signals = {};
 	}
-	
+
 	emit(signalName) {
 		if (!this._signals[signalName]) this._signals[signalName] = [];
-		
+
 		for (let callback of this._signals[signalName]) {
 			callback();
 		}
 	}
-	
+
 	connect(signalName, callback) {
 		if (!this._signals[signalName]) this._signals[signalName] = [];
-		
+
 		this._signals[signalName].push(callback);
 	}
 }
@@ -22,51 +22,50 @@ const global = new (class extends Signaler {
 	ready() {
 		this.emit("ready");
 	}
-});
-
+})();
 
 const sidebar = {};
 sidebar.icons = {
-	"Home": {
+	Home: {
 		img: "/assets/sidebar/IconHome.png",
-		link: "/"
+		link: "/",
 	},
-	"Music": {
+	Music: {
 		img: "/assets/sidebar/IconMusic.png",
-		link: "/songs/"
+		link: "/songs/",
 	},
-	"SFX": {
+	SFX: {
 		img: "/assets/sidebar/IconSFX.png",
 		link: "",
-		disabled: true
+		disabled: true,
 	},
-	"Gallery": {
+	Gallery: {
 		img: "/assets/sidebar/IconGallery.png",
 		link: "",
-		disabled: true
+		disabled: true,
 	},
-	"Games": {
+	Games: {
 		img: "/assets/sidebar/IconGames.png",
 		link: "/games/",
 	},
-	"Bar": {
-		isBar: true
+	Bar: {
+		isBar: true,
 	},
-	"Iris": {
+	Iris: {
 		img: "/assets/sidebar/IconIris.png",
-		link: "/games/iris/"
+		link: "/games/iris/",
 	},
 	"Shape of Balance": {
 		img: "/assets/sidebar/IconShapeOfBalance.png",
 		link: "/games/shape_of_balance",
 	},
-	"Archives": {
+	Archives: {
 		img: "/assets/sidebar/IconArchives.png",
-		link: "/archives/"
+		link: "/archives/",
 	},
 	"Song Editor": {
 		img: "/assets/sidebar/IconEditor.png",
-		link: "/songs/editor/"
+		link: "/songs/editor/",
 	},
 };
 
@@ -84,32 +83,32 @@ sidebar.button.onclick = function () {
 for (let iconName in sidebar.icons) {
 	if (sidebar.icons[iconName].isBar) {
 		const element = document.createElement("hr");
-		
+
 		sidebar.element.appendChild(element);
-		
+
 		continue;
 	}
-	
+
 	if (sidebar.icons[iconName].disabled) continue;
-	
+
 	const element = document.createElement("div");
 	element.classList.add("sidebarIcon");
-	
+
 	const img = document.createElement("img");
 	img.src = sidebar.icons[iconName].img;
 	img.draggable = false;
 	img.alt = "Icon for " + iconName;
 	element.appendChild(img);
-	
+
 	const text = document.createElement("span");
 	text.innerText = iconName;
 	element.appendChild(text);
-	
+
 	sidebar.element.appendChild(element);
-	
+
 	if (!sidebar.icons[iconName].disabled) {
 		element.onclick = function (event) {
-			window.open(sidebar.icons[iconName].link, (event.ctrlKey || event.metaKey) ? "_blank" : "_self");
+			window.open(sidebar.icons[iconName].link, event.ctrlKey || event.metaKey ? "_blank" : "_self");
 		};
 		element.onmouseup = function (event) {
 			if (event.button == 1) window.open(sidebar.icons[iconName].link, "_blank");
@@ -117,11 +116,10 @@ for (let iconName in sidebar.icons) {
 	}
 }
 
-
 for (let node of document.querySelectorAll(".siteLink")) {
 	if (!node.dataset.link) continue;
-	
-	node.onclick = () => location.href = node.dataset.link;
+
+	node.onclick = () => (location.href = node.dataset.link);
 }
 // musicArchive.onclick = function () {
 //   location.href = "https://goofybox.glitch.me/archives/songs";
@@ -131,20 +129,20 @@ for (let node of document.querySelectorAll(".siteLink")) {
 // }
 
 if (typeof itch != "undefined") {
-	itch.onclick = () => window.open('https://goofybox-studios.itch.io/');
+	itch.onclick = () => window.open("https://goofybox-studios.itch.io/");
 }
-
 
 function lerp(a, b, t) {
 	return (b - a) * t + a;
 }
 
-{ // Background
+{
+	// Background
 	const background = document.createElement("canvas");
 	const ctx = background.getContext("2d");
 	background.id = "background";
 	document.body.appendChild(background);
-	
+
 	class Particle {
 		constructor() {
 			this.x = Math.random() * background.width;
@@ -154,50 +152,50 @@ function lerp(a, b, t) {
 			this.height = 5;
 			this.scale = 6.0 + Math.random() * 4.0;
 			this.colour = "white";
-			
+
 			this.vx = 0.0;
 			this.vy = -1.0 * (Math.random() * 0.5 + 0.75);
 			this.rotationVelocity = (Math.random() * 2.0 - 1.0) * 0.01;
 		}
-		
+
 		update() {
 			this.vx += (Math.random() * 2.0 - 1.0) * 0.05;
 			this.vx *= 0.9;
 			this.x += this.vx;
 			this.y += this.vy;
 			this.rotation += this.rotationVelocity;
-			
+
 			if (this.y <= -50) {
 				this.kill();
 				return true;
 			}
 		}
-		
+
 		kill() {
 			particles.splice(particles.indexOf(this), 1);
 		}
-		
+
 		draw(ctx) {
 			let width = this.width * this.scale;
 			let height = this.width * this.scale;
-			
+
 			let x0 = Math.cos(this.rotation + Math.PI * 0.0) * width,
-					y0 = Math.sin(this.rotation + Math.PI * 0.0) * height;
+				y0 = Math.sin(this.rotation + Math.PI * 0.0) * height;
 			let x1 = Math.cos(this.rotation + Math.PI * 0.5) * width,
-					y1 = Math.sin(this.rotation + Math.PI * 0.5) * height;
+				y1 = Math.sin(this.rotation + Math.PI * 0.5) * height;
 			let x2 = Math.cos(this.rotation + Math.PI * 1.0) * width,
-					y2 = Math.sin(this.rotation + Math.PI * 1.0) * height;
+				y2 = Math.sin(this.rotation + Math.PI * 1.0) * height;
 			let x3 = Math.cos(this.rotation + Math.PI * 1.5) * width,
-					y3 = Math.sin(this.rotation + Math.PI * 1.5) * height;
-			
+				y3 = Math.sin(this.rotation + Math.PI * 1.5) * height;
+
 			ctx.beginPath();
-			
+
 			ctx.moveTo(this.x + x0, this.y + y0);
 			ctx.lineTo(this.x + x1, this.y + y1);
 			ctx.lineTo(this.x + x2, this.y + y2);
 			ctx.lineTo(this.x + x3, this.y + y3);
 			ctx.lineTo(this.x + x0, this.y + y0);
-			
+
 			ctx.fillStyle = this.colour;
 			ctx.strokeStyle = this.colour;
 			ctx.lineWidth = 10;
@@ -207,49 +205,48 @@ function lerp(a, b, t) {
 			ctx.stroke();
 		}
 	}
-	
+
 	const particles = [];
-	
+
 	let particleTimer = 0.0;
-	
+
 	function animate() {
 		requestAnimationFrame(animate);
-		
+
 		rect = document.documentElement.getBoundingClientRect();
-		
+
 		background.width = rect.width;
 		background.height = rect.height;
 		ctx.clearRect(0, 0, background.width, background.height);
-		
+
 		// ctx.fillRect(0, 0, 100, 100);
-		
+
 		particleTimer -= 1.0;
 		if (particleTimer <= 0.0) {
 			particles.push(new Particle());
 			particleTimer = 60000.0 / background.width;
 		}
-		
+
 		for (let i = 0; i < particles.length; i++) {
 			const particle = particles[i];
-			
+
 			const killed = particle.update();
-			
+
 			if (killed) {
 				i--;
 				continue;
 			}
-			
+
 			particle.draw(ctx);
 		}
 	}
-	
+
 	global.connect("ready", function () {
 		let rect = document.documentElement.getBoundingClientRect();
 
 		background.width = rect.width;
 		background.height = rect.height;
-		
-	
+
 		let initialParticleCount = background.height / (60000.0 / background.width);
 		for (let i = 0; i < initialParticleCount; i++) {
 			const particle = new Particle();
@@ -258,10 +255,10 @@ function lerp(a, b, t) {
 
 			particles.push(particle);
 		}
-		
+
 		animate();
 	});
-	
+
 	// Stickers
 	{
 		const stickerNodes = document.querySelectorAll(".sticker");
@@ -286,23 +283,19 @@ function lerp(a, b, t) {
 
 			if (sticker.grabbed) return;
 
-			const onScreen =
-					(parsePixel(sticker.node.style.left) <= window.innerWidth - 40) &&
-					(parsePixel(sticker.node.style.left) >= -40) &&
-					(parsePixel(sticker.node.style.top) >= -40) &&
-					(parsePixel(sticker.node.style.top) <= document.body.scrollHeight - 40);
+			const onScreen = parsePixel(sticker.node.style.left) <= window.innerWidth - 40 && parsePixel(sticker.node.style.left) >= -40 && parsePixel(sticker.node.style.top) >= -40 && parsePixel(sticker.node.style.top) <= document.body.scrollHeight - 40;
 
 			if (onScreen && !forceOverride) return;
 
 			const gutterSize = 200;
 
 			if (sticker.onRight) {
-				sticker.node.style.left = (window.innerWidth - 80 - Math.random() * (gutterSize - 80)) + "px";
+				sticker.node.style.left = window.innerWidth - 80 - Math.random() * (gutterSize - 80) + "px";
 			} else {
-				sticker.node.style.left = (Math.random() * (gutterSize - 80)) + "px";
+				sticker.node.style.left = Math.random() * (gutterSize - 80) + "px";
 			}
 
-			sticker.node.style.top = (Math.random() * (document.body.scrollHeight - 320) + 160) + "px";
+			sticker.node.style.top = Math.random() * (document.body.scrollHeight - 320) + 160 + "px";
 		}
 
 		function initStickers() {
@@ -353,7 +346,7 @@ function lerp(a, b, t) {
 
 		window.addEventListener("resize", function (e) {
 			for (let sticker of stickers) {
-						if (sticker.touched) continue;
+				if (sticker.touched) continue;
 
 				resetStickerPosition(sticker);
 			}
@@ -363,15 +356,15 @@ function lerp(a, b, t) {
 			requestAnimationFrame(animate);
 
 			for (let sticker of stickers) {
-					resetStickerPosition(sticker);
+				resetStickerPosition(sticker);
 
 				if (!sticker.grabbed) continue;
 
-				sticker.node.style.left = (mouse.x + sticker.grabOffsetX) + "px";
-				sticker.node.style.top = (mouse.y + sticker.grabOffsetY) + "px";
+				sticker.node.style.left = mouse.x + sticker.grabOffsetX + "px";
+				sticker.node.style.top = mouse.y + sticker.grabOffsetY + "px";
 			}
 		}
-		
+
 		global.connect("initStickers", function () {
 			initStickers();
 		});

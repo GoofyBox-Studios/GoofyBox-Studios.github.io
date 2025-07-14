@@ -1,5 +1,3 @@
-/* global GravitySensor Gyroscope mousedown mouseup mousemove JSZip */
-
 var Input;
 var Sprite;
 var MultiSoundEffect;

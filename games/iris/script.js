@@ -17,5 +17,5 @@ document.querySelector(".header").style.backgroundImage = "url(\"" + backgroundI
 global.ready();
 
 setTimeout(function () {
-  global.emit("initStickers");
+	global.emit("initStickers");
 }, 500);

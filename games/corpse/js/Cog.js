@@ -1,5 +1,3 @@
-/* global Vector2 RoundCollision ctx colliding images scale player corpses */
-
 function Cog(x, y, counterClockwise) {
 	this.position = new Vector2(x * 16, y * 16);
 	this.collision = new RoundCollision(32, 16, 16);
@@ -12,15 +10,15 @@ function Cog(x, y, counterClockwise) {
 
 	this.corpses = 0;
 
-	this.draw = function() {
+	this.draw = function () {
 		ctx.save();
 		ctx.translate((this.position.x + 16) * scale, (this.position.y + 16) * scale);
-		ctx.rotate(Math.floor(this.rotation / 22.5) * 22.5 / 360 * (Math.PI * 2) * (this.counterClockwise ? -1 : 1));
-		ctx.drawImage(images.spritesheet1, (this.counterClockwise ? 32 : 0), 0, 32, 32, -32 * scale, -32 * scale, 64 * scale, 64 * scale);
+		ctx.rotate(((Math.floor(this.rotation / 22.5) * 22.5) / 360) * (Math.PI * 2) * (this.counterClockwise ? -1 : 1));
+		ctx.drawImage(images.spritesheet1, this.counterClockwise ? 32 : 0, 0, 32, 32, -32 * scale, -32 * scale, 64 * scale, 64 * scale);
 		ctx.restore();
 	};
 
-	this.update = function() {
+	this.update = function () {
 		this.hitting = false;
 		this.corpses = 0;
 		this.time += 1;

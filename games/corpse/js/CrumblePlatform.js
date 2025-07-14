@@ -1,35 +1,29 @@
-/* global ctx Vector2 Collision images entities soundBank Sprite */
-
-const fallingPlatformSprites = [
-  new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/fallingPlatformBrown.png?v=1715480822340"),
-  new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/fallingPlatformGreen.png?v=1715480822575"),
-  new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/fallingPlatformGrey.png?v=1715480822848"),
-];
+const fallingPlatformSprites = [new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/fallingPlatformBrown.png?v=1715480822340"), new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/fallingPlatformGreen.png?v=1715480822575"), new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/fallingPlatformGrey.png?v=1715480822848")];
 
 class CrumblePlatform {
-  constructor(x, y, blockWidth) {
-    this.position = new Vector2(x * 16, y * 16);
-    this.collision = new Collision(blockWidth * 16, 16, 0, 0);
-    this.blockWidth = blockWidth;
+	constructor(x, y, blockWidth) {
+		this.position = new Vector2(x * 16, y * 16);
+		this.collision = new Collision(blockWidth * 16, 16, 0, 0);
+		this.blockWidth = blockWidth;
 
-    this.maxDelay = 60;
+		this.maxDelay = 60;
 
-    this.collider = null;
-    this.nextCollider = null;
+		this.collider = null;
+		this.nextCollider = null;
 
-    this.delay = -1;
-    this.shake = 0;
-    this.falling = false;
+		this.delay = -1;
+		this.shake = 0;
+		this.falling = false;
 
-    this.velY = 1;
-  }
+		this.velY = 1;
+	}
 
 	draw() {
 		// for (let x = 0; x < this.blockWidth; x++) {
-    ctx.drawImage(fallingPlatformSprites[0], 0, this.delay >= 10 ? 16 : 0, 32, 16, (this.position.x + this.shake), this.position.y, 32, 16);
+		ctx.drawImage(fallingPlatformSprites[0], 0, this.delay >= 10 ? 16 : 0, 32, 16, this.position.x + this.shake, this.position.y, 32, 16);
 		// }
 	}
-  
+
 	update() {
 		if (this.collider) {
 			if (this.collider.onGround && this.delay == -1) {

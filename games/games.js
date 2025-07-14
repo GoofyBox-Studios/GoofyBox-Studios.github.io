@@ -29,7 +29,7 @@ const games = [
 	
 	{
 		name: "Wommland (New)",
-		link: "https://goofybox.glitch.me/games/wommland/",
+		link: "/games/wommland/",
 		description: "",
 		isArchived: true,
 	},
@@ -42,37 +42,37 @@ const games = [
 	},
 	{
 		name: "Wommland (Old)",
-		link: "https://goofybox.glitch.me/games/scratch/wommland.html",
+		link: "/games/scratch/wommland.html",
 		description: "(OLD SCRATCH GAME)\n\nA basic OLD scratch platformer.",
 		isArchived: true,
 	},
 	{
 		name: "Wommland Boss 1",
-		link: "https://goofybox.glitch.me/games/scratch/wommlandBoss1.html",
+		link: "/games/scratch/wommlandBoss1.html",
 		description: "(OLD SCRATCH GAME)\n\nA prototype for a boss for Wommland.",
 		isArchived: true,
 	},
 	{
 		name: "Pyromaniac",
-		link: "https://goofybox.glitch.me/games/scratch/pyromaniac.html",
+		link: "/games/scratch/pyromaniac.html",
 		description: "(OLD SCRATCH GAME)\n\nA platformer boss fight.",
 		isArchived: true,
 	},
 	{
 		name: "Adventure 0.2",
-		link: "https://goofybox.glitch.me/games/scratch/adventure.html",
+		link: "/games/scratch/adventure.html",
 		description: "(OLD SCRATCH GAME)\n\nA VERY OLD platformer prototype.",
 		isArchived: true,
 	},
 	{
 		name: "Marbo",
-		link: "https://goofybox.glitch.me/games/scratch/marbo.html",
+		link: "/games/scratch/marbo.html",
 		description: "(OLD SCRATCH GAME)\n\n2D circle-physics platformer.",
 		isArchived: true,
 	},
 	{
 		name: "Scratchmons: A destiny awaits.",
-		link: "https://goofybox.glitch.me/games/scratch/scratchmons.html",
+		link: "/games/scratch/scratchmons.html",
 		description: "(OLD SCRATCH GAME)\n\nA stupid scratch version of pokémon.",
 		isArchived: true,
 	}

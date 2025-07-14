@@ -1,5 +1,3 @@
-/* global playerPrev playerPlay playerNext playerState playerEdit playerProgressValue playerLoop musicPlayerElement songGroupColours */
-
 function lerp(a, b, t) {
 	return (b - a) * t + a;
 }
@@ -222,7 +220,7 @@ musicPlayer.setColour = function (propertyName, value) {
 	musicPlayerElement.style.setProperty(propertyName, result);
 };
 
-musicPlayer.update = function () { // TODO
+musicPlayer.update = function () {
 	requestAnimationFrame(musicPlayer.update);
 	
 	if (musicPlayer.audioPlayer.readyState == 4 && musicPlayer.willPlayAudio) {
@@ -235,7 +233,10 @@ musicPlayer.update = function () { // TODO
 	musicPlayer.setColour("--colour-c", musicPlayer.coloursTo[2]);
 	musicPlayer.setColour("--colour-d", musicPlayer.coloursTo[3] ?? "#ffffff");
 	
-	playerPlay.src = (musicPlayer.isPlaying()) ? "/assets/player/Playing.png" : "/assets/player/Paused.png";
+	const playing = musicPlayer.isPlaying();
+	if ((playerPlay.src == "/assets/player/Playing.png") != playing) {
+		playerPlay.src = playing ? "/assets/player/Playing.png" : "/assets/player/Paused.png";
+	}
 	playerProgressValue.style.width = (musicPlayer.getSongPosition() * 100).toFixed(2) + "%";
 	
 	const beepbox = musicPlayer.getBeepbox()?.main;
