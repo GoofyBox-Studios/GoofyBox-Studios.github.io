@@ -61,42 +61,44 @@ function loadLevel(l) {
 
 var clippingSize = 1000;
 
-function audioEnd(e) {
-	this.parent.parent.playing.splice(this.parent.parent.playing.indexOf(this.parent.id), 1);
-	this.currentTime = 0;
+class audioEnd {
+	constructor(e) {
+		this.parent.parent.playing.splice(this.parent.parent.playing.indexOf(this.parent.id), 1);
+		this.currentTime = 0;
+	}
 }
 
-function SoundEffect(src) {
-	return {
-		list: [],
-		src: src,
-		playing: [],
-		play: function () {
-			if (playSounds) {
-				let id = 0;
-				for (let i = 0; i < 10; i++) {
-					if (!this.playing.includes(i)) {
-						id = i;
-						break;
-					}
-				}
-				this.playing.push(id);
-				this.list[id].currentTime = 0;
-				this.list[id].play();
-				this.list[id].audio.removeEventListener("ended", audioEnd);
-				this.list[id].audio.addEventListener("ended", audioEnd);
-			}
-		},
-	};
-}
+// function SoundEffect(src) {
+// 	return {
+// 		list: [],
+// 		src: src,
+// 		playing: [],
+// 		play: function () {
+// 			if (playSounds) {
+// 				let id = 0;
+// 				for (let i = 0; i < 10; i++) {
+// 					if (!this.playing.includes(i)) {
+// 						id = i;
+// 						break;
+// 					}
+// 				}
+// 				this.playing.push(id);
+// 				this.list[id].currentTime = 0;
+// 				this.list[id].play();
+// 				this.list[id].audio.removeEventListener("ended", audioEnd);
+// 				this.list[id].audio.addEventListener("ended", audioEnd);
+// 			}
+// 		},
+// 	};
+// }
 
-function playRandomSound() {
-	let id = Math.floor(Math.random() * arguments.length);
-	soundBank[arguments[id]].play();
-}
+// function playRandomSound() {
+// 	let id = Math.floor(Math.random() * arguments.length);
+// 	soundBank[arguments[id]].play();
+// }
 
 var soundBank = {
-	jump: new SoundEffect("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Jump.wav?v=1715455973005"),
+	jump: new MultiSoundEffect("/assets/corpse/Jump.wav"),
 	// door_open: new SoundEffect("unused/Door Open.mp3"),
 	// door_close: new SoundEffect("unused/Door Close.mp3"),
 	// step1: new SoundEffect("unused/Step 1.wav"),
@@ -104,19 +106,19 @@ var soundBank = {
 	// step3: new SoundEffect("unused/Step 3.wav"),
 	// step4: new SoundEffect("unused/Step 4.wav"),
 	// crumbling: new SoundEffect("unused/Crumble Long.wav"),
-	crumbled: new SoundEffect("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Crumble.wav?v=1715455971912"),
-	death: new SoundEffect("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Death.wav?v=1715455972552"),
+	crumbled: new MultiSoundEffect("/assets/corpse/Crumble.wav"),
+	death: new MultiSoundEffect("/assets/corpse/Death.wav"),
 	// scroll: new SoundEffect("unused/Scroll Open.mp3"),
 };
 
 var titleMusic = new Audio();
-titleMusic.src = "https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Title.m4a?v=1715457009876";
+titleMusic.src = "/assets/corpse/Title.m4a";
 titleMusic.loop = true;
 titleMusic.crossOrigin = "";
 titleMusic.volume = 0;
 
 var music = new Audio();
-music.src = "https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Levels.m4a?v=1715457007638";
+music.src = "/assets/corpse/Levels.m4a";
 music.loop = true;
 music.crossOrigin = "";
 music.volume = 0;
@@ -158,7 +160,11 @@ var images = {
 	title2: document.getElementById("title2"),
 };
 
-const tileSprites = [new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/tilesBrown.png?v=1715480737063"), new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/tilesGreen.png?v=1715480737317"), new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/tilesGrey.png?v=1715480737547")];
+const tileSprites = [
+	new Sprite("/assets/corpse/tilesBrown.png"),
+	new Sprite("/assets/corpse/tilesGreen.png"),
+	new Sprite("/assets/corpse/tilesGrey.png")
+];
 
 var canMove = true;
 var fade = 0;
@@ -325,18 +331,22 @@ function collidingWithRound(a, b) {
 	return dx * dx + dy * dy <= b.collision.radius * b.collision.radius;
 }
 
-function Sound(src) {
-	this.audio = new Audio();
-	this.audio.src = src;
-	this.audio.preload = "auto";
-	this.play = function () {
-		this.audio.play();
-	};
-}
+// class Sound {
+// 	constructor(src) {
+// 		this.audio = new Audio();
+// 		this.audio.src = src;
+// 		this.audio.preload = "auto";
+// 		this.play = function () {
+// 			this.audio.play();
+// 		};
+// 	}
+// }
 
-function Obj(x, y, w, h) {
-	this.position = new Vector2(x, y);
-	this.collision = new Collision(w, h);
+class Obj {
+	constructor(x, y, w, h) {
+		this.position = new Vector2(x, y);
+		this.collision = new Collision(w, h);
+	}
 }
 
 // function Collision(w, h, offX = 0, offY = 0) {
@@ -346,17 +356,17 @@ function Obj(x, y, w, h) {
 //   this.offsetY = offY || 0;
 // }
 
-for (let s in soundBank) {
-	let sound = soundBank[s];
-	for (let i = 0; i < 10; i++) {
-		let snd = new Sound(sound.src);
-		snd.parent = sound;
-		snd.audio.parent = snd;
-		snd.id = i;
-		snd.audio.volume = 0.8; // 0.2
-		sound.list.push(snd);
-	}
-}
+// for (let s in soundBank) {
+// 	let sound = soundBank[s];
+// 	for (let i = 0; i < 10; i++) {
+// 		let snd = new Sound(sound.src);
+// 		snd.parent = sound;
+// 		snd.audio.parent = snd;
+// 		snd.id = i;
+// 		snd.audio.volume = 0.8; // 0.2
+// 		sound.list.push(snd);
+// 	}
+// }
 
 for (let i = 0; i < levels[currentLevel].crumbles.length; i++) {
 	let c = levels[currentLevel].crumbles[i];

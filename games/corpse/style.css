@@ -22,6 +22,6 @@ canvas {
 }
 
 @font-face {
-	src: url(https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Font.ttf?v=1715456219452);
+	src: url(/assets/corpse/Font.ttf);
 	font-family: Pixel;
 }

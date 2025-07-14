@@ -1,4 +1,4 @@
-const playerSprite = new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/MarkusYoung.png?v=1715460431930");
+const playerSprite = new Sprite("/assets/corpse/MarkusYoung.png");
 var playerSprites = {
 	stand: { uv: [0, 0, 16, 19], flags: [0] },
 	dead: { uv: [48, 19, 16, 19], flags: [0] },
@@ -253,7 +253,7 @@ class Player {
 		let t = this.colliding(2);
 		if (t && t[0]) {
 			// door
-			particles.push(new Particle(2, t[1] * 16 - 1, t[2] * 16 + 1));
+			particles.push(new Particle(2, t[1] * 16 - 1, t[2] * 16 + 9));
 			if (Input.is_action_just_pressed("enter")) {
 				currentLevel++;
 				loadLevel(currentLevel);

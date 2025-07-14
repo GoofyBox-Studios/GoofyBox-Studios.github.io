@@ -1,4 +1,8 @@
-const fallingPlatformSprites = [new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/fallingPlatformBrown.png?v=1715480822340"), new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/fallingPlatformGreen.png?v=1715480822575"), new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/fallingPlatformGrey.png?v=1715480822848")];
+const fallingPlatformSprites = [
+	new Sprite("/assets/corpse/fallingPlatformBrown.png"),
+	new Sprite("/assets/corpse/fallingPlatformGreen.png"),
+	new Sprite("/assets/corpse/fallingPlatformGrey.png")
+];
 
 class CrumblePlatform {
 	constructor(x, y, blockWidth) {
