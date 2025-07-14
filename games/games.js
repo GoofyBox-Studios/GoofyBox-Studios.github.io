@@ -21,7 +21,7 @@ const games = [
 	},
 	{
 		name: "Wommland",
-		link: "https://goofybox.glitch.me/games/wommland",
+		link: "/games/wommland",
 		description: "A cute work-in-progress platformer.",
 		disabled: true,
 	},
@@ -33,13 +33,13 @@ const games = [
 		description: "",
 		isArchived: true,
 	},
-	{
-		name: "Card Game",
-		link: "https://goofy-games.glitch.me/card-game",
-		description: "A card game...",
-		disabled: true,
-		isArchived: true,
-	},
+	// {
+	// 	name: "Card Game",
+	// 	link: "https://goofy-games.glitch.me/card-game",
+	// 	description: "A card game...",
+	// 	disabled: true,
+	// 	isArchived: true,
+	// },
 	{
 		name: "Wommland (Old)",
 		link: "/games/scratch/wommland.html",

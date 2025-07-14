@@ -439,7 +439,7 @@ const platformer = new (class {
 
 		this.element = document.getElementById("platformer");
 		this.sprites = {
-			player: new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Goofyplayer.png?v=1714335655705"),
+			player: new Sprite("/assets/platformer/Goofyplayer.png"),
 		};
 		this.paused = true;
 		this.tileUv = {
@@ -730,14 +730,14 @@ const platformer = new (class {
 				solid: true,
 				connector: true,
 				connects: [1, 2],
-				sprite: new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/platformerTile0.png?v=1714359120816"),
+				sprite: new Sprite("/assets/platformer/platformerTile0.png"),
 			},
 			{
 				// 2
 				solid: true,
 				connector: true,
 				connects: [1, 2],
-				sprite: new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/platformerTile1.png?v=1714359121348"),
+				sprite: new Sprite("/assets/platformer/platformerTile1.png"),
 			},
 			{
 				// 3
@@ -769,7 +769,7 @@ const platformer = new (class {
 						solid: false,
 					},
 				],
-				sprite: new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/redTiles.png?v=1720030630470"),
+				sprite: new Sprite("/assets/platformer/redTiles.png"),
 			},
 		];
 		this.map = [

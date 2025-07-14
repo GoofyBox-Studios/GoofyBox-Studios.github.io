@@ -159,7 +159,7 @@ downloadElement.onclick = function () {
 				metadata: {
 					authors: ["GoofyBox Studios"],
 					license: "MIT",
-					url: "https://goofybox.glitch.me/minecraft",
+					url: "/minecraft",
 					generated_with: {
 						goofybox_minecraft: ["1.0.0"],
 					},

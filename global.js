@@ -121,12 +121,6 @@ for (let node of document.querySelectorAll(".siteLink")) {
 
 	node.onclick = () => (location.href = node.dataset.link);
 }
-// musicArchive.onclick = function () {
-//   location.href = "https://goofybox.glitch.me/archives/songs";
-// }
-// gamesArchive.onclick = function () {
-//   location.href = "https://goofybox.glitch.me/archives/games";
-// }
 
 if (typeof itch != "undefined") {
 	itch.onclick = () => window.open("https://goofybox-studios.itch.io/");

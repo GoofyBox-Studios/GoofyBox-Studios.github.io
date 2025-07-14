@@ -1,4 +1,4 @@
-const skullSwirlImage = new Sprite("https://cdn.glitch.global/74da3bde-3b8c-415d-917a-158276350589/Skull%20Swirl.png?v=1715462223438");
+const skullSwirlImage = new Sprite("/assets/corpse/Skull Swirl.png");
 
 class Particle {
 	constructor(type, x, y, dieAtEnd = true, speed = 0.3, vel, damp, darken = false) {
