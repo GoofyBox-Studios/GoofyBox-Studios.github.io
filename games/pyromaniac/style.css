@@ -1,0 +1,19 @@
+body {
+	background: black;
+}
+
+#canvas {
+	position: fixed;
+	left: 50vw;
+	top: 50vh;
+	transform: translate(-50%, -50%);
+	width: 100vw;
+	height: 75vw;
+	max-width: 133.33333vh;
+	max-height: 100vh;
+	background: black;
+	
+	cursor: none;
+	
+	image-rendering: pixelated;
+}
