@@ -14,11 +14,24 @@ const songGroupColours = {
 function songsLoaded() {
 }
 
-let songs = [];
+let songsAlbumsLoaded = 0;
+let songs = {};
+let albums = {};
 
 fetch("/songs/songs.json")
 .then((response) => response.json())
 .then((data) => {
-	songs = data;
+	songs = data.songs;
+	if (++songsAlbumsLoaded != 2) return;
+
+	songsLoaded();
+});
+
+fetch("/songs/albums.json")
+.then((response) => response.json())
+.then((data) => {
+	albums = data;
+	if (++songsAlbumsLoaded != 2) return;
+
 	songsLoaded();
 });

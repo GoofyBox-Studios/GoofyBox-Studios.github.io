@@ -169,7 +169,7 @@ musicPlayer.toggleLoop = function () {
 		musicPlayer.audioPlayer.loop = musicPlayer.loop;
 	}
 	
-	playerLoop.src = musicPlayer.loop ? "/assets/player/LoopOn.png" : "/assets/player/LoopOff.png";
+	playerLoop.innerText = musicPlayer.loop ? "repeat_on" : "repeat";
 };
 
 musicPlayer.getSongPosition = function () {

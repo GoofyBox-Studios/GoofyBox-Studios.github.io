@@ -15,7 +15,16 @@ body {
 	overflow-y: scroll;
 	min-width: 100vw;
 	min-height: 100vh;
+	padding-bottom: 100px;
 }
+
+footer {
+	background-color: rgba(0, 0, 0, 0.3);
+	background-clip: padding-box;
+	-webkit-background-clip: padding-box;
+	border-top: 8px solid rgba(0, 0, 0, 0.5);
+}
+
 button,
 input,
 audio {
@@ -145,6 +154,7 @@ h1 {
 
 	padding-top: 4px;
 	display: flex;
+	align-items: center;
 }
 
 #playerState {
@@ -159,10 +169,6 @@ h1 {
 #playerEdit {
 	position: absolute;
 	right: 30px;
-}
-
-#playerLoop {
-	transform: translate(0, 5px);
 }
 
 #playerProgress {
@@ -184,10 +190,10 @@ h1 {
 	background: var(--colour-d);
 }
 
-.musicPlayer img {
-	height: 80px;
-	image-rendering: pixelated;
+.musicPlayer span {
+	font-size: 60px;
 	cursor: pointer;
+	user-select: none;
 }
 
 @media (width <= 750px) {
