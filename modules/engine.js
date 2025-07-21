@@ -1581,7 +1581,7 @@ var AudioNode;
 
 	const __AudioNode = {
 		initialized: false,
-		contex: null,
+		context: null,
 		gainNode: null,
 		echoNode: null,
 		panNode: null,
