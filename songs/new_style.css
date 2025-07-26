@@ -5,9 +5,9 @@ body {
 #albums {
 	display: flex;
 	padding: 8px;
-	gap: 4px;
+	gap: 64px;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-evenly;
 }
 
 .album {
