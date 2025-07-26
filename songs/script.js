@@ -8,23 +8,16 @@ for (let audio of [...document.querySelectorAll("audio")]) {
 	};
 }
 
-const groups = {
-	"testy": document.getElementById("testyGroup"),
-	"goofy": document.getElementById("goofyGroup"),
-	"spicy": document.getElementById("spicyGroup"),
-	"sugary": document.getElementById("sugaryGroup"),
-	"upperSalt": document.getElementById("upperSaltGroup"),
-	"lowerSalt": document.getElementById("lowerSaltGroup"),
-	"sour": document.getElementById("sourGroup"),
-	"sortable": document.getElementById("sortableGroup"),
-	"stale": document.getElementById("staleGroup"),
-	"remix": document.getElementById("remixGroup"),
-};
-
 let currentlyPlaying = null;
 
 const songElements = [];
 function songsLoaded() {
+	albums["everything"] = {
+		"title": "Everything",
+		"cover": "/assets/music_icons/blank.png",
+		"songs": Object.keys(songs).sort((a, b) => a.localeCompare(b))
+	};
+
 	for (const albumName in albums) {
 		const album = albums[albumName];
 
@@ -43,11 +36,26 @@ function songsLoaded() {
 		play.classList.add("material-symbols-outlined");
 		play.classList.add("play-button");
 		art.appendChild(play);
+		const shuffle = document.createElement("span");
+		shuffle.innerText = "shuffle";
+		shuffle.classList.add("material-symbols-outlined");
+		shuffle.classList.add("shuffle-button");
+		art.appendChild(shuffle);
 
 		node.append(art);
 		node.append(title);
 
 		document.getElementById("albums").appendChild(node);
+		
+		art.onclick = () => {
+			musicPlayer.playAlbum(album);
+		}
+		
+		shuffle.onclick = (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			musicPlayer.playAlbum(album, true);
+		}
 	}
 	// for (let songGroupName in songs) {
 	// 	const group = groups[songGroupName];
@@ -77,13 +85,8 @@ function songsLoaded() {
 	// }
 }
 
-random.onclick = function () {
-	songElements[Math.floor(Math.random() * songElements.length)].click();
-};
-
-musicPlayer.addEventListener("finish", function () {
-	console.log("Finish!");
-	songElements[Math.floor(Math.random() * songElements.length)].click();
-});
+// random.onclick = function () {
+// 	songElements[Math.floor(Math.random() * songElements.length)].click();
+// };
 
 global.ready();
