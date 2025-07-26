@@ -1,14 +1,13 @@
+body {
+	padding-bottom: 100px;
+}
+
 #albums {
 	display: flex;
 	padding: 8px;
-	gap: 2px;
+	gap: 4px;
 	flex-wrap: wrap;
-	justify-content: space-between;
-}
-
-#albums::after {
-	content: "";
-	flex: auto;
+	justify-content: space-around;
 }
 
 .album {
@@ -22,6 +21,8 @@
 	
 	& .art {
 		position: relative;
+		width: 180px;
+		height: 180px;
 
 		& img {
 			width: 180px;
@@ -38,10 +39,23 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 			font-size: 120px;
+			transition: opacity 0.25s;
 		}
 		
-		&:not(:hover) .play-button {
-			display: none;
+		& .shuffle-button {
+			position: absolute;
+			right: 4px;
+			bottom: 4px;
+			font-size: 40px;
+			transition: opacity 0.25s;
 		}
+		
+		&:not(:hover) .play-button, &:not(:hover) .shuffle-button {
+			opacity: 0;
+		}
+	}
+	
+	& span {
+		font-size: 20px;
 	}
 }

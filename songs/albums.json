@@ -3,21 +3,68 @@
 		"title": "Trilogy",
 		"cover": "/assets/music_icons/trilogy.png",
 		"songs": [
-			"Seascape",
 			"Wake Up Call",
-			"DelA",
-			"Cyclical Motions",
-			"Faerie Lights",
-			"Orange Waves",
-			"Auran Gardens",
 			"Floating Voxels",
+			"The In-Between",
+			"Orange Waves",
+			"Cyclical Motions",
+			"DelA",
+			"Faerie Lights",
+			"Auran Gardens",
 			"Skybound",
+			"Seascape",
 			"Wake Up Call II",
-			"Wake up Call",
-			"delA",
-			"Journey Into Light",
-			"Wake up Call 2",
-			"The In-Between"
+			"Journey Into Light"
+		]
+	},
+	"chiptunes": {
+		"title": "Chiptunes",
+		"cover": "/assets/music_icons/blank_wings.png",
+		"songs": [
+			"Neo-Pirate Village",
+			"Overworld Theme",
+			"Gardenhouse"
+		]
+	},
+	"ghost": {
+		"title": "Ghost's Album",
+		"cover": "/assets/music_icons/blank_wild.png",
+		"songs": [
+			"Ghost's Warble",
+			"Ghost's Howl",
+			"Ghost's Tale",
+			"Ghost's Jam",
+			"Ghost's Agony",
+			"Ghost's Chant",
+			"Disco Cow (ghost remix)",
+			"Ghost's Warble [Swanky]",
+			"Ba da da da duh (Ghost Remix)"
+		]
+	},
+	"bops": {
+		"title": "Da Bops",
+		"cover": "/assets/music_icons/blank_evil.png",
+		"songs": [
+			"Overworld Theme",
+			"Disco Cow",
+			"I am a Big Dinosaur",
+			"Taemen Trail",
+			"Endless Colour",
+			"Molo Theme",
+			"Momentum",
+			"Swanky Shop",
+			"Crystal of Undeath",
+			"stardust.mp3",
+			"Banger Synth Track",
+			"The Rival",
+			"Rift Wizards"
+		]
+	},
+	"pirate": {
+		"title": "Pirate Shanties",
+		"cover": "/assets/music_icons/blank_blue.png",
+		"songs": [
+			"Pirate's Tale"
 		]
 	}
 }

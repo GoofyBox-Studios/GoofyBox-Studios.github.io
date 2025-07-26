@@ -21,7 +21,8 @@ let albums = {};
 fetch("/songs/songs.json")
 .then((response) => response.json())
 .then((data) => {
-	songs = data.songs;
+	songs = data;
+	console.log("Loaded - songs");
 	if (++songsAlbumsLoaded != 2) return;
 
 	songsLoaded();
@@ -31,6 +32,7 @@ fetch("/songs/albums.json")
 .then((response) => response.json())
 .then((data) => {
 	albums = data;
+	console.log("Loaded - albums");
 	if (++songsAlbumsLoaded != 2) return;
 
 	songsLoaded();

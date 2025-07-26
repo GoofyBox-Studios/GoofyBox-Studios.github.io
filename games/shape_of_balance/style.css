@@ -8,16 +8,12 @@ body {
 	background-position: 50% 0;
 	background-attachment: fixed;
 	
-	padding: 40px;
-	
 	cursor: none !important;
 }
 
 .content {
-	position: absolute;
-	left: 50%;
-	top: 0px;
-	transform: translate(-50%, 0px);
+	margin-left: auto;
+	margin-right: auto;
 	
 	width: auto;
 	max-width: 75%;

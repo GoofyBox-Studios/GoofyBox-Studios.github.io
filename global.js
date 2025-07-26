@@ -30,7 +30,7 @@ sidebar.icons = {
 		img: "/assets/sidebar/IconHome.png",
 		link: "/",
 	},
-	Music: {
+	Jukebox: {
 		img: "/assets/sidebar/IconMusic.png",
 		link: "/songs/",
 	},
