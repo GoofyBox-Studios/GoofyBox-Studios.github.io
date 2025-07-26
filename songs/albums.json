@@ -73,12 +73,6 @@
 			"Pirate's Tale"
 		]
 	},
-	"boss_fights": {
-		"title": "Boss Fights",
-		"cover": "/assets/music_icons/blank_purple.png",
-		"songs": [
-		]
-	},
 	"minecraft": {
 		"title": "Minecraft",
 		"cover": "/assets/music_icons/blank_green.png",
@@ -91,7 +85,7 @@
 	},
 	"orchestrals": {
 		"title": "Orchestral",
-		"cover": "/assets/music_icons/blank_blue.png",
+		"cover": "/assets/music_icons/blank_purple.png",
 		"songs": [
 			"Agsta four",
 			"A Cullmunation"

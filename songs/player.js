@@ -65,11 +65,11 @@ class MusicPlayer {
 		// 	console.log("Ended!");
 		// };
 
-		this.elements.playerLoop.onclick = () => this.toggleLoop;
-		this.elements.playerPrev.onclick = () => this.previousSong;
-		this.elements.playerPlay.onclick = () => this.togglePlay;
-		this.elements.playerNext.onclick = () => this.nextSong;
-		this.elements.playerEdit.onclick = () => this.editSong;
+		this.elements.playerLoop.onclick = () => this.toggleLoop();
+		this.elements.playerPrev.onclick = () => this.previousSong();
+		this.elements.playerPlay.onclick = () => this.togglePlay();
+		this.elements.playerNext.onclick = () => this.nextSong();
+		this.elements.playerEdit.onclick = () => this.editSong();
 		this.elements.playerExpand.onclick = () => document.querySelector(".music-player-content").classList.toggle("expanded");
 		
 		this.update();
@@ -387,7 +387,7 @@ class MusicPlayer {
 			row.appendChild(art);
 
 			const text = document.createElement("span");
-			text.innerText = this.queue[index];
+			text.innerText = song.title;
 			row.appendChild(text);
 
 			this.elements.queue.appendChild(row);
