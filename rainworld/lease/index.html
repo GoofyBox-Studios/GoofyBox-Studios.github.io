@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Rainworld Region Lease</title>
+
+		<link rel="stylesheet" href="/rainworld/lease/style.css" />
+		<script src="/rainworld/lease/script.js" defer></script>
+	</head>
+	<body>
+		<h1>Region Lease</h1>
+		
+		<div id="loaded">
+			<input type="text" id="acronym">
+			<label for="suggest-acronyms">Suggest Acronyms:</label>
+			<input type="checkbox" id="suggest-acronyms" />
+		</div>
+		
+		<div id="results">
+			<p id="loading">Loading...</p>
+		</div>
+		
+		<div id="popup" class=hidden>
+			<div class="header state-0">
+				<h1>
+					SU - Outskirts
+				</h1>
+
+				<span class="bubble">Released (1.9)</span>
+				<button onclick="closePopup()">X</button>
+			</div>
+			
+			<div class="content">
+				<div class="section">
+					<h2>Author</h2>
+					<ul id="author">
+						<li>Videocult</li>
+					</ul>
+				</div>
+		
+				<div class="section">
+					<h2>Subregions</h2>
+					<ul id="subregions">
+					</ul>
+				</div>
+		
+				<div class="section">
+					<h2>Connections</h2>
+					<ul id="connections">
+						<li>SU to SH</li>
+						<li>SU to DS</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
