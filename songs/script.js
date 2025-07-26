@@ -12,13 +12,15 @@ let currentlyPlaying = null;
 
 const songElements = [];
 function songsLoaded() {
+	const albumNames = ["everything", ...Object.keys(albums)];
+
 	albums["everything"] = {
 		"title": "Everything",
-		"cover": "/assets/music_icons/blank.png",
+		"cover": "/assets/music_icons/everything.png",
 		"songs": Object.keys(songs).sort((a, b) => a.localeCompare(b))
 	};
 
-	for (const albumName in albums) {
+	for (const albumName of albumNames) {
 		const album = albums[albumName];
 
 		const node = document.createElement("div");

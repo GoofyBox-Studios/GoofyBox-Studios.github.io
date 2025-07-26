@@ -23,7 +23,13 @@
 		"songs": [
 			"Neo-Pirate Village",
 			"Overworld Theme",
-			"Gardenhouse"
+			"Gardenhouse",
+			"8-bit Threat",
+			"A Duck Crosses the Road",
+			"A Tale as Old as Time",
+			"A Tale of an Adventurer",
+			"Arcades are cool",
+			"Bitty kingdom"
 		]
 	},
 	"ghost": {
@@ -65,6 +71,43 @@
 		"cover": "/assets/music_icons/blank_blue.png",
 		"songs": [
 			"Pirate's Tale"
+		]
+	},
+	"boss_fights": {
+		"title": "Boss Fights",
+		"cover": "/assets/music_icons/blank_purple.png",
+		"songs": [
+		]
+	},
+	"minecraft": {
+		"title": "Minecraft",
+		"cover": "/assets/music_icons/blank_green.png",
+		"songs": [
+			"Willing",
+			"A-t1",
+			"ambient_bells.wav",
+			"ambient_deep.wav"
+		]
+	},
+	"orchestrals": {
+		"title": "Orchestral",
+		"cover": "/assets/music_icons/blank_blue.png",
+		"songs": [
+			"Agsta four",
+			"A Cullmunation"
+		]
+	},
+	"softwave": {
+		"title": "Softwave",
+		"cover": "/assets/music_icons/blank_red.png",
+		"songs": [
+			"A Dream of Home",
+			"A World of Squares",
+			"Alios",
+			"Ambient - City",
+			"Ambient Medium",
+			"Auran Gardens",
+			"Billowing Clouds"
 		]
 	}
 }

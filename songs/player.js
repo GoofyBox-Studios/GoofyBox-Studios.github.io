@@ -103,6 +103,7 @@ class MusicPlayer {
 	
 	playSong(songName) {
 		this.elements.player.classList.remove("no-song");
+		document.title = songName;
 		const song = songs[songName];
 		let src = "";
 		let usesBeepboxPlayer = true;
@@ -231,6 +232,7 @@ class MusicPlayer {
 	}
 	
 	stopSong() {
+		document.title = "GoofyBox - Jukebox";
 		if (this.playingRecordedAudio) {
 			this.audioPlayer.pause();
 		} else {
