@@ -19,7 +19,7 @@
 	},
 	"chiptunes": {
 		"title": "Chiptunes",
-		"cover": "/assets/music_icons/blank_wings.png",
+		"cover": "/assets/music_icons/dreamer.png",
 		"songs": [
 			"Neo-Pirate Village",
 			"Overworld Theme",
@@ -29,7 +29,9 @@
 			"A Tale as Old as Time",
 			"A Tale of an Adventurer",
 			"Arcades are cool",
-			"Bitty kingdom"
+			"Bitty Kingdom",
+			"Rafting",
+			"Migantous"
 		]
 	},
 	"ghost": {
@@ -57,7 +59,6 @@
 			"Taemen Trail",
 			"Endless Colour",
 			"Molo Theme",
-			"Momentum",
 			"Swanky Shop",
 			"Crystal of Undeath",
 			"stardust.mp3",
@@ -70,7 +71,9 @@
 		"title": "Pirate Shanties",
 		"cover": "/assets/music_icons/blank_blue.png",
 		"songs": [
-			"Pirate's Tale"
+			"Pirate's Tale",
+			"Pirate's Tale (Title Screen)",
+			"Pirate's Tale (Embark)"
 		]
 	},
 	"minecraft": {
@@ -80,20 +83,22 @@
 			"Willing",
 			"A-t1",
 			"ambient_bells.wav",
-			"ambient_deep.wav"
+			"ambient_deep.wav",
+			"Minecraft"
 		]
 	},
 	"orchestrals": {
 		"title": "Orchestral",
-		"cover": "/assets/music_icons/blank_purple.png",
+		"cover": "/assets/music_icons/blank_wings.png",
 		"songs": [
 			"Agsta four",
-			"A Cullmunation"
+			"A Cullmunation",
+			"Sangrodel"
 		]
 	},
 	"softwave": {
 		"title": "Softwave",
-		"cover": "/assets/music_icons/blank_red.png",
+		"cover": "/assets/music_icons/softwave.png",
 		"songs": [
 			"A Dream of Home",
 			"A World of Squares",
