@@ -8,6 +8,31 @@ for (let audio of [...document.querySelectorAll("audio")]) {
 	};
 }
 
+let songsAlbumsLoaded = 0;
+let songs = {};
+let albums = {};
+
+fetch("/songs/songs.json")
+.then((response) => response.json())
+.then((data) => {
+	songs = data;
+	console.log("Loaded - songs");
+	if (++songsAlbumsLoaded != 2) return;
+
+	songsLoaded();
+});
+
+fetch("/songs/albums.json")
+.then((response) => response.json())
+.then((data) => {
+	albums = data;
+	console.log("Loaded - albums");
+	if (++songsAlbumsLoaded != 2) return;
+
+	songsLoaded();
+});
+
+
 let currentlyPlaying = null;
 
 const songElements = [];
@@ -59,36 +84,6 @@ function songsLoaded() {
 			musicPlayer.playAlbum(album, true);
 		}
 	}
-	// for (let songGroupName in songs) {
-	// 	const group = groups[songGroupName];
-		
-	// 	if (!group) continue;
-		
-	// 	for (let songName in songs[songGroupName]) {
-	// 		const songUrl = songs[songGroupName][songName];
-			
-	// 		const element = document.createElement("div");
-	// 		element.innerText = songName;
-	// 		element.classList.add("song");
-	// 		element.onclick = function (event) {
-	// 			event.preventDefault();
-				
-	// 			if (currentlyPlaying) currentlyPlaying.classList.remove("playing");
-				
-	// 			currentlyPlaying = element;
-	// 			currentlyPlaying.classList.add("playing");
-				
-	// 			musicPlayer.playSong(songUrl, songName, songGroupName);
-	// 		};
-			
-	// 		songElements.push(element);
-	// 		group.appendChild(element);
-	// 	}
-	// }
 }
-
-// random.onclick = function () {
-// 	songElements[Math.floor(Math.random() * songElements.length)].click();
-// };
 
 global.ready();

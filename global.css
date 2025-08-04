@@ -261,10 +261,19 @@ h1 {
 			&:hover {
 				background-color: rgba(0, 0, 0, 0.25);
 			}
+
+			& .names {
+				display: flex;
+				flex-direction: column;
 			
-			& span {
-				font-size: 16px;
-				font-weight: 700;
+				& span:first-child {
+					font-size: 20px;
+				}
+
+				& span:last-child:not(:first-child) {
+					font-size: 14px;
+					color: #aaa;
+				}
 			}
 			
 			& .art {
@@ -304,12 +313,18 @@ h1 {
 	}
 }
 
+@media (width <= 1060px) {
+	.music-player-content > img {
+		display: none;
+	}
+}
+
 .music-player-content.expanded {
 	top: 0px;
 }
 
 @media (width <= 750px) {
-	#playerState {
+	.musicPlayer #playerState {
 		display: none;
 	}
 }

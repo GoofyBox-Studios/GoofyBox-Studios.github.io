@@ -11,7 +11,6 @@ class MusicPlayer {
 		this.willPlayAudio = false;
 		this.playingRecordedAudio = false;
 		this.senseForFinish = false;
-		this.coloursTo = songGroupColours.default;
 		this.wasPlaying = false;
 		this.elements = {
 			player: document.getElementById("musicPlayerElement"),
@@ -47,7 +46,7 @@ class MusicPlayer {
 			
 			if (event.code == "Digit0") {
 				event.preventDefault();
-				this.previousSong();
+				this.restartSong();
 			}
 			
 			if (event.code == "KeyQ") {
@@ -71,6 +70,8 @@ class MusicPlayer {
 		this.elements.playerNext.onclick = () => this.nextSong();
 		this.elements.playerEdit.onclick = () => this.editSong();
 		this.elements.playerExpand.onclick = () => document.querySelector(".music-player-content").classList.toggle("expanded");
+		
+		this.selectedSongElement = null;
 		
 		this.update();
 	}
@@ -108,7 +109,9 @@ class MusicPlayer {
 		let src = "";
 		let usesBeepboxPlayer = true;
 		
-		const songUrl = song.versions[song.versions.length - 1];
+		const version = song.versions[song.versions.length - 1];
+		
+		const songUrl = version?.url ?? version;
 		if (songUrl.startsWith("https://jummb.us/")) {
 			src = "/players/playerv6/#" + songUrl.slice(18);
 		} else if (songUrl.startsWith("https://goofybox.glitch.me/goofybox/")) {
@@ -130,7 +133,6 @@ class MusicPlayer {
 		
 		if (!src) return;
 		
-		// this.coloursTo = songGroupColours[songGroup];
 		
 		document.querySelector("#playerState span").innerText = song.title;
 		
@@ -170,7 +172,7 @@ class MusicPlayer {
 		}
 	}
 	
-	previousSong() {
+	restartSong() {
 		if (this.playingRecordedAudio) {
 			this.audioPlayer.currentTime = 0;
 		} else {
@@ -182,12 +184,35 @@ class MusicPlayer {
 		}
 	}
 	
+	previousSong() {
+		if (this.selectedSongElement == null) return;
+
+		this.selectedSongElement.classList.remove("current");
+
+		this.currentQueueIndex -= 1;
+		if (this.currentQueueIndex < 0) {
+			this.stopSong();
+			this.currentQueueIndex = 0;
+		} else {
+			this.playSong(this.queue[this.currentQueueIndex]);
+			this.selectedSongElement = this.selectedSongElement.previousElementSibling;
+			this.selectedSongElement.classList.add("current");
+		}
+		this.reloadQueueElement();
+	}
+	
 	nextSong() {
+		if (this.selectedSongElement == null) return;
+
+		this.selectedSongElement.classList.remove("current");
+
 		this.currentQueueIndex += 1;
 		if (this.currentQueueIndex >= this.queue.length) {
 			this.stopSong();
 		} else {
 			this.playSong(this.queue[this.currentQueueIndex]);
+			this.selectedSongElement = this.selectedSongElement.nextElementSibling;
+			this.selectedSongElement.classList.add("current");
 		}
 		this.reloadQueueElement();
 	}
@@ -336,11 +361,6 @@ class MusicPlayer {
 			this.audioPlayer.play();
 		}
 		
-		this.setColour("--colour-a", this.coloursTo[0]);
-		this.setColour("--colour-b", this.coloursTo[1]);
-		this.setColour("--colour-c", this.coloursTo[2]);
-		this.setColour("--colour-d", this.coloursTo[3] ?? "#ffffff");
-		
 		const playing = this.isPlaying();
 		if (this.wasPlaying !== playing) {
 			this.wasPlaying = playing;
@@ -369,9 +389,11 @@ class MusicPlayer {
 
 		for (let index in this.queue) {
 			const song = songs[this.queue[index]];
+			const version = song.versions[song.versions.length - 1];
 
 			const row = document.createElement("div");
 			if (index == this.currentQueueIndex) {
+				this.selectedSongElement = row;
 				row.classList.add("current");
 			}
 
@@ -386,16 +408,30 @@ class MusicPlayer {
 			art.appendChild(play);
 			row.appendChild(art);
 
+			const box = document.createElement("div");
+			box.classList.add("names");
+
 			const text = document.createElement("span");
 			text.innerText = song.title;
-			row.appendChild(text);
+			box.appendChild(text);
+			if (typeof version === "object") {
+				const subText = document.createElement("span");
+				subText.innerText = (version.authors ?? []).join(", ") + " - " + version.date;
+				box.appendChild(subText);
+			}
+			
+			row.appendChild(box);
 
 			this.elements.queue.appendChild(row);
 			
 			art.onclick = () => {
-				this.currentQueueIndex = index;
+				this.selectedSongElement.classList.remove("current");
+				row.classList.add("current");
+				this.selectedSongElement = row;
+
+				this.currentQueueIndex = +index;
 				this.playSong(this.queue[index]);
-				this.reloadQueueElement();
+				// this.reloadQueueElement();
 			}
 		}
 	}
