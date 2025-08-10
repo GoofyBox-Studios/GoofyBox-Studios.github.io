@@ -1,4 +1,33 @@
 {
+	"volume_1": {
+		"title": "GoofyBox Volume 1",
+		"cover": "/assets/music_icons/blank.png",
+		"songs": [
+			"Melodious Melody",
+			"Disco Cow",
+			"Bitty Kingdom",
+			"The Pyromaniac",
+			"Plucky Shop",
+			"Epic Ruins",
+			"Pirate's Tale",
+			"Troll",
+			"Open Minded",
+			"Card Boss",
+			"Chirpy Village",
+			"Foresta"
+		]
+	},
+	"volume_2": {
+		"title": "GoofyBox Volume 2",
+		"cover": "/assets/music_icons/blank_evil.png",
+		"songs": [
+			"Cyberdrift",
+			"Dark Clouds",
+			"Dark Intro",
+			"Never Again",
+			"One Day"
+		]
+	},
 	"trilogy": {
 		"title": "Trilogy",
 		"cover": "/assets/music_icons/trilogy.png",
@@ -20,11 +49,13 @@
 	"chiptunes": {
 		"title": "Chiptunes",
 		"cover": "/assets/music_icons/dreamer.png",
+		"description": "Chiptunes, and videogame-y songs",
 		"songs": [
 			"Neo-Pirate Village",
 			"Overworld Theme",
 			"Gardenhouse",
 			"8-bit Threat",
+			"A Boat Trip at Sunset",
 			"A Duck Crosses the Road",
 			"A Tale as Old as Time",
 			"A Tale of an Adventurer",
@@ -32,7 +63,39 @@
 			"Bitty Kingdom",
 			"Rafting",
 			"Migantous",
-			"Lamppost"
+			"Lamppost",
+			"Vil Noid",
+			"Cloud Kingdom",
+			"Ruins (8-bit)",
+			"Afterend",
+			"Amber Town",
+			"Ancient Scrolls",
+			"Archery Minigame",
+			"Bloodfeud",
+			"Chirpy Village",
+			"Chixbox",
+			"Construction",
+			"Credits",
+			"CRT Rain",
+			"Dark Intro",
+			"Dum Dee Doo",
+			"Goblin Fight",
+			"Gravel Bop",
+			"Happy Town",
+			"HE HAS COME",
+			"Hometown",
+			"Industrial Evolution",
+			"Jeri Remembers",
+			"Lakes and Streams",
+			"Legends of Drey",
+			"Momentum",
+			"Monologue",
+			"Never Again",
+			"New Age Slug",
+			"Oncoming Giant Robots",
+			"OST",
+			"Revenge of the Bits",
+			"Rusted Streets"
 		]
 	},
 	"ghost": {
@@ -45,9 +108,11 @@
 			"Ghost's Jam",
 			"Ghost's Agony",
 			"Ghost's Chant",
-			"Disco Cow (ghost remix)",
+			"Disco Cow Ghost Remix",
 			"Ghost's Warble [Swanky]",
-			"Ba da da da duh (Ghost Remix)"
+			"Ba da da da duh (Ghost Remix)",
+			"Dance of the Soulmonger",
+			"Dance of the Spector"
 		]
 	},
 	"bops": {
@@ -65,7 +130,10 @@
 			"stardust.mp3",
 			"Banger Synth Track",
 			"The Rival",
-			"Rift Wizards"
+			"Rift Wizards",
+			"Big World Vibe",
+			"Card Boss",
+			"Legends of Drey"
 		]
 	},
 	"pirate": {
@@ -74,32 +142,49 @@
 		"songs": [
 			"Pirate's Tale",
 			"Pirate's Tale (Title Screen)",
-			"Pirate's Tale (Embark)"
+			"Pirate's Tale (Embark)",
+			"Cloud Kingdom"
 		]
 	},
 	"minecraft": {
 		"title": "Minecraft",
 		"cover": "/assets/music_icons/blank_green.png",
+		"description": "Songs related to and/or for Minecraft",
 		"songs": [
 			"Willing",
 			"A-t1",
 			"ambient_bells.wav",
 			"ambient_deep.wav",
-			"Minecraft"
+			"Minecraft",
+			"Wisteria"
 		]
 	},
 	"orchestrals": {
 		"title": "Orchestral",
 		"cover": "/assets/music_icons/blank_wings.png",
+		"description": "Emotional songs with a build-up",
 		"songs": [
 			"Agsta four",
-			"A Cullmunation",
-			"Sangrodel"
+			"A Culmunation",
+			"Sangrodel",
+			"Forshadow-ation",
+			"Epic Ruins",
+			"Ruins Synthwave",
+			"Cookie",
+			"DelA",
+			"Drifting Apart",
+			"Forgotten Melodies",
+			"Harmonious Harmony Chiptune",
+			"Holes in my skin",
+			"Horsebath",
+			"Horsebath II",
+			"Lenia II"
 		]
 	},
 	"softwave": {
 		"title": "Softwave",
 		"cover": "/assets/music_icons/softwave.png",
+		"description": "Smoother synthy songs",
 		"songs": [
 			"A Dream of Home",
 			"A World of Squares",
@@ -107,7 +192,256 @@
 			"Ambient - City",
 			"Ambient Medium",
 			"Auran Gardens",
-			"Billowing Clouds"
+			"Billowing Clouds",
+			"Tentacles",
+			"Banger Synth Track",
+			"Campfire",
+			"Catacombs",
+			"Cyberdrift",
+			"Cyclical Motions",
+			"Dawn",
+			"Discovery of Dark Matter",
+			"Dissolving Voxels",
+			"Dreams of Starbound Fields",
+			"Dreams of Twilight",
+			"Equilibrium",
+			"Erenith",
+			"Fading Lights",
+			"Faerie Lights",
+			"Fireflies",
+			"First Flight",
+			"Floating Voxels",
+			"Glaciers",
+			"Intirim of Worlds",
+			"Iris Menu",
+			"Iris Menu 2",
+			"Iris Theme",
+			"Journey Into Light",
+			"Lorem Ipsum",
+			"Maroon 1",
+			"Meteors",
+			"Mosten",
+			"New Haven City",
+			"Orange Waves",
+			"Peace",
+			"Peaceful Stars",
+			"Powerlines - Ambitan",
+			"Rest"
+		]
+	},
+	"broken": {
+		"title": "Broken",
+		"cover": "/assets/music_icons/glitch.png",
+		"songs": [
+			"A-t1",
+			"Willing",
+			"Rotsque",
+			"No. 12",
+			"Slant",
+			"Wisteria",
+			"Dream Hallway",
+			"467a",
+			"A Sad Ending",
+			"Bittersweet Destiny",
+			"If only...",
+			"Dangle Broop",
+			"Deterioration",
+			"Dilapidated Arcade",
+			"Distant",
+			"Distraught",
+			"Dzeltran",
+			"Forsight",
+			"Ido's Theme",
+			"Lemurs",
+			"Liminal Song",
+			"Old and Very Dusty Stardust",
+			"Old Disk",
+			"Quiet Office",
+			"Restitute",
+			"System 0010"
+		]
+	},
+	"boss_fights": {
+		"title": "Boss Fights",
+		"cover": "/assets/music_icons/blank_red.png",
+		"songs": [
+			"The Pyromaniac",
+			"Gravel King",
+			"The Rival",
+			"Card Boss",
+			"Cataclysm",
+			"DragonHold",
+			"Glorious Anarchy",
+			"Isolated Moon",
+			"Luminaria"
+		]
+	},
+	"rainworld": {
+		"title": "Rain World",
+		"cover": "/assets/music_icons/Seven_Blue_Haize.png",
+		"songs": [
+			"Reclaiming Entropy",
+			"Reclaiming Entropy (ST Remix)",
+			"Threat - Desert",
+			"Electronic Resurrection",
+			"Floodwaters",
+			"The Renegade",
+			"Theme V - Altered",
+			"Theme I - Arps",
+			"Threat - Rubicon",
+			"Entrance to the Void",
+			"Halcyon Memories"
+		]
+	},
+	"rune_king": {
+		"title": "Rune King",
+		"cover": "/assets/music_icons/blank_purple.png",
+		"songs": [
+			"Dungeons",
+			"Rune King Title",
+			"Rune King Failure",
+			"Dark Forest",
+			"Rune King Intro",
+			"Rune King Ruins",
+			"Rune King Courtyard",
+			"Epic Ruins",
+			"Legend of the Chip King",
+			"Rune Monk"
+		]
+	},
+	"odd_ones": {
+		"title": "The Odd Ones",
+		"cover": "/assets/music_icons/blank.png",
+		"songs": [
+			"A Twinkle in my Robot Eye",
+			"Alice of the Bells",
+			"Altan Terminai",
+			"Altan Terminus",
+			"Altan Terminoid",
+			"An Honorary Tribute",
+			"Alternate with horns",
+			"Anti-Levitation",
+			"Aquatic Echoes",
+			"Arcanist's Workshop",
+			"Arythmic Idyllism",
+			"Avera",
+			"Bippitibop",
+			"Calculations",
+			"Casual Grokics",
+			"Computing Software",
+			"Cruxt",
+			"Crystal Light",
+			"Data Influx",
+			"dddt0-4",
+			"Deeper into the Closet",
+			"Didger",
+			"Discard the Aces",
+			"Drain World Returns",
+			"Dusty Mines",
+			"Earthmuncher",
+			"Eludance",
+			"Eons",
+			"Ethereal Cave",
+			"Falling Stars",
+			"Grey Lights",
+			"Grey Oozes",
+			"Happy Time",
+			"I Shot It",
+			"I'm happy here, right now",
+			"In Memoriam",
+			"In Too Deep",
+			"Incessant Growth",
+			"Intense Bits",
+			"Iqx Zbot",
+			"Just a small suburban town",
+			"King Korran",
+			"Laser Wizard Cowboy",
+			"Last Stand Against the Gravity Demons",
+			"Light the Black Flames",
+			"Location 6",
+			"London",
+			"Longing",
+			"Maelstrom",
+			"Mazquel",
+			"Medris-19",
+			"Medris-4",
+			"Melancholechanseer",
+			"Merchant of Tooths",
+			"Mleggalo",
+			"Molemen Momento",
+			"New City Suburbia",
+			"Oh, hey",
+			"Only Forwards Remains",
+			"Powerlines",
+			"Psychedelic",
+			"Ribultan",
+			"Running Water"
+		]
+	},
+	"shops_and_towns": {
+		"title": "Shops & Towns",
+		"cover": "/assets/music_icons/blank.png",
+		"songs": [
+			"Plucky Shop",
+			"Swanky Shop",
+			"Mambo Jambo",
+			"Minigame Shop",
+			"Molo Theme",
+
+			"Pumpkin Town"
+		]
+	},
+	"corpse": {
+		"title": "Corpse",
+		"cover": "/assets/music_icons/blank.png",
+		"songs": [
+			"Corpse",
+			"Crystal of Undeath"
+		]
+	},
+	"hue_blast": {
+		"title": "Hue Blast",
+		"cover": "/assets/music_icons/blank.png",
+		"songs": [
+			"Hue Blast Title Theme",
+			"Endless Colour",
+			"Level 5"
+		]
+	},
+	"drunky_kung": {
+		"title": "Drunky Kung 63",
+		"cover": "/assets/music_icons/blank.png",
+		"songs": [
+			"Drunky Kung",
+			"Dull Troll",
+			"Bellowing Bogs",
+			"Jungle Cave",
+			"Motivational Death Screen",
+			"One Day",
+			"Patric Henry plays the Organ",
+			"Pompous Old Man",
+			"Rudy's Place",
+			"Youtube is ded"
+		]
+	},
+	"remixes": {
+		"title": "Remixes",
+		"cover": "/assets/music_icons/blank.png",
+		"songs": [
+			"Echoes of the (Chiptune) Eye",
+			"Megalovania",
+			"Gerudo Valley",
+			"Gritty Hue Blast",
+			"Ori"
+		]
+	},
+	"adventures": {
+		"title": "Adventures",
+		"cover": "/assets/music_icons/blank.png",
+		"songs": [
+			"Lamppost",
+			"Meteors",
+			"Rafting"
 		]
 	}
 }
