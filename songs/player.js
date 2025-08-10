@@ -389,7 +389,7 @@ class MusicPlayer {
 
 		for (let index in this.queue) {
 			const song = songs[this.queue[index]];
-			const version = song.versions[song.versions.length - 1];
+			const latestVersion = song.versions[song.versions.length - 1];
 
 			const row = document.createElement("div");
 			if (index == this.currentQueueIndex) {
@@ -400,7 +400,7 @@ class MusicPlayer {
 			const art = document.createElement("div");
 			art.classList.add("art");
 			const img = document.createElement("img");
-			img.src = song.cover ?? this.currentAlbum?.cover;
+			img.src = song.cover ?? this.currentAlbum?.cover ?? "/assets/main/Cookie.png";
 			art.appendChild(img);
 			const play = document.createElement("span");
 			play.innerText = "play_arrow";
@@ -414,9 +414,18 @@ class MusicPlayer {
 			const text = document.createElement("span");
 			text.innerText = song.title;
 			box.appendChild(text);
-			if (typeof version === "object") {
+			let authors = new Set();
+			for (let version of song.versions) {
+				if (typeof version === "object" && version.authors) {
+					for (let author of version.authors) {
+						authors.add(author);
+					}
+				}
+			}
+
+			if (authors.size > 0) {
 				const subText = document.createElement("span");
-				subText.innerText = (version.authors ?? []).join(", ") + " - " + version.date;
+				subText.innerText = [...authors].join(", ") + " - " + latestVersion.date;
 				box.appendChild(subText);
 			}
 			
