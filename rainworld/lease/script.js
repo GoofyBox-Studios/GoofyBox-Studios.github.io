@@ -136,7 +136,7 @@ fetch(acronyms_url)
 						
 						paletteData.used = used;
 						paletteData.available = [];
-						paletteData.generator = getUnusedGroups(paletteData.used, 390);
+						paletteData.generator = getUnusedGroups(paletteData.used, 590);
 
 						loaded = true;
 						updateAcronyms();
@@ -385,11 +385,9 @@ function updatePalettes() {
 
 	paletteResults.replaceChildren();
 
-	const p = document.createElement("p");
-	p.innerText = "Palette numbers start at 390 since everything before is claimed";
-	p.style.display = "block";
-	p.style.alignSelf = "center";
-	p.style.textAlign = "center";
+	const p = document.createElement("div");
+	p.innerText = "Palette numbers start at 590 since everything before is claimed";
+	p.classList.add("notice");
 	paletteResults.appendChild(p);
 }
 
