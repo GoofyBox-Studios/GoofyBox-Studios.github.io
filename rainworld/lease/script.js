@@ -1,15 +1,15 @@
-const results = document.getElementById("results");
+const acronymResults = document.getElementById("acronymResults");
+const paletteResults = document.getElementById("paletteResults");
 const acronymInput = document.getElementById("acronym");
 const popupElement = document.getElementById("popup");
 const suggestAcronyms = document.getElementById("suggest-acronyms");
 
-const spreadsheetId = "14wt42_ZalI5di8zpUFx3WvPWldC_L7SwIbgb_TxOpUk";
-const ACRONYMS_GID = "634960091";
-const CONNECTIONS_GID = "0";
-const MOD_CONNECTIONS_GID = "758721855";
-const acronyms_url = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&gid=${ACRONYMS_GID}`;
-const connections_url = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&gid=${CONNECTIONS_GID}`;
-const mod_connections_url = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:json&gid=${MOD_CONNECTIONS_GID}`;
+const gviz_url = `https://docs.google.com/spreadsheets/d/14wt42_ZalI5di8zpUFx3WvPWldC_L7SwIbgb_TxOpUk/gviz/tq?tqx=out:json`
+const csv_url = `https://docs.google.com/spreadsheets/d/14wt42_ZalI5di8zpUFx3WvPWldC_L7SwIbgb_TxOpUk/export?format=csv`
+const acronyms_url = `${gviz_url}&gid=634960091`;
+const connections_url = `${gviz_url}&gid=0`;
+const mod_connections_url = `${gviz_url}&gid=758721855`;
+const palettes_url = `${csv_url}&gid=1310131772`;
 
 const states = ["Released (1.9)", "Released (1.5)", "Unreleased (>95%)", "In-Progress (>50%)", "In-Progress", "Projected", "On Hiatus"];
 
@@ -40,15 +40,38 @@ const acronymData = {
 };
 const connectionData = {};
 
+const paletteData = {};
+
 const names = new Set(["SU", "HI", "GW", "DS", "SH", "SL", "CC", "UW", "SS", "SI", "LF", "SB", "VS", "OE", "LC", "LM", "DM", "MS", "RM", "UG", "CL", "HR"]);
+
+function getTableData(str) {
+	const jsonData = JSON.parse(str.substring(47, str.length - 2));
+
+	return jsonData;
+}
+
+function getRows(tableData) {
+	return tableData.table.rows.map((row) => row.c.map((cell) => cell?.v ?? ""));
+}
+
+function getTableRows(str) {
+	return getRows(getTableData(str));
+}
+
+function *getUnusedGroups(used, start = 0) {
+	let i = start;
+
+	while (true) {
+		yield { index: i, used: used.has(i) };
+
+		i++;
+	}
+}
 
 fetch(acronyms_url)
 	.then((response) => response.text())
 	.then((text) => {
-		const prefixLength = 47;
-		const suffixLength = 2;
-		const jsonData = JSON.parse(text.substring(prefixLength, text.length - suffixLength));
-		const rows = jsonData.table.rows.map((row) => row.c.map((cell) => cell?.v ?? ""));
+		const rows = getTableRows(text);
 
 		for (let entry of rows) {
 			const key = entry[0].trim();
@@ -62,10 +85,7 @@ fetch(acronyms_url)
 		fetch(connections_url)
 			.then((response) => response.text())
 			.then((text) => {
-				const prefixLength = 47;
-				const suffixLength = 2;
-				const jsonData = JSON.parse(text.substring(prefixLength, text.length - suffixLength));
-				const rows = jsonData.table.rows.map((row) => row.c.map((cell) => cell?.v ?? ""));
+				const rows = getTableRows(text);
 				
 				let region = null;
 				for (let entry of rows) {
@@ -75,8 +95,12 @@ fetch(acronyms_url)
 					
 					if (!connectionData[region[0]]) connectionData[region[0]] = [];
 					
-					entry[3] = entry[3].trim();
-					let toRegion = Object.values(acronymData).filter((i) => i[1] == entry[3].replace("\n", " "))[0];
+					entry[3] = entry[3].trim().replace("\n", " ");
+
+					if (!entry[3])
+						continue;
+
+					let toRegion = Object.values(acronymData).filter((i) => i[1] == entry[3])[0];
 					if (!toRegion) {
 						console.warn("Cannot find region: '" + entry[3] + "'");
 						continue;
@@ -86,9 +110,40 @@ fetch(acronyms_url)
 					connectionData[region[0]].push({to: entry[3], room: entry[1], type: entry[2], author: entry[4]});
 					connectionData[toRegion[0]].push({to: entry[0], room: null, type: entry[2], author: entry[4]});
 				}
+				
+				fetch(palettes_url)
+					.then((response) => response.text())
+					.then((csv) => {
+						const rows = csv.split("\n");
+						const used = new Set();
+						for (let i = 0; i <= 35; i++) used.add(i);
+						
+						for (let row of rows) {
+							let [number, mod] = row.split(",");
+							
+							if (!number) continue;
 
-				loaded = true;
-				update();
+							number = number.replace("\"", "");
+							if ((/^-?[0-9]+$/).test(number)) {
+								used.add(+number);
+							} else {
+								let [a, b] = number.split("-").map(x => +x);
+								for (let i = a; i <= b; i++) {
+									used.add(i);
+								}
+							}
+						}
+						
+						paletteData.used = used;
+						paletteData.available = [];
+						paletteData.generator = getUnusedGroups(paletteData.used, 390);
+
+						loaded = true;
+						updateAcronyms();
+						updatePalettes();
+
+						setInterval(nextPalette, 50);
+					});
 			})
 			.catch((error) => {
 				console.error("Error fetching data:", error);
@@ -235,10 +290,10 @@ function closePopup() {
 	popupElement.classList.add("hidden");
 }
 
-function update() {
+function updateAcronyms() {
 	if (!loaded) return;
 
-	results.replaceChildren();
+	acronymResults.replaceChildren();
 
 	const frag = document.createDocumentFragment();
 	
@@ -253,7 +308,7 @@ function update() {
 			p.style.display = "block";
 			p.style.alignSelf = "center";
 			p.style.textAlign = "center";
-			results.appendChild(p);
+			acronymResults.appendChild(p);
 			return;
 		}
 	
@@ -306,16 +361,49 @@ function update() {
 			p.style.display = "block";
 			p.style.alignSelf = "center";
 			p.style.textAlign = "center";
-			results.appendChild(p);
+			acronymResults.appendChild(p);
 			return;
 		}
 	}
 
-	results.appendChild(frag);
+	acronymResults.appendChild(frag);
 }
 
-acronymInput.addEventListener("input", update);
-suggestAcronyms.addEventListener("input", update);
+function createPalette(item) {
+	const div = document.createElement("div");
+	div.classList.add("state-" + (item.used ? "-1" : "0"));
+
+	const span = document.createElement("span");
+	span.innerText = item.index;
+	div.appendChild(span);
+
+	return div;
+}
+
+function updatePalettes() {
+	if (!loaded) return;
+
+	paletteResults.replaceChildren();
+
+	const p = document.createElement("p");
+	p.innerText = "Palette numbers start at 390 since everything before is claimed";
+	p.style.display = "block";
+	p.style.alignSelf = "center";
+	p.style.textAlign = "center";
+	paletteResults.appendChild(p);
+}
+
+function nextPalette() {
+	if (Math.abs(paletteResults.scrollHeight - paletteResults.scrollTop - paletteResults.clientHeight) >= 400)
+		return;
+
+	const newVal = paletteData.generator.next().value;
+	paletteData.available.push(newVal);
+	paletteResults.appendChild(createPalette(newVal));
+}
+
+acronymInput.addEventListener("input", updateAcronyms);
+suggestAcronyms.addEventListener("input", updateAcronyms);
 document.body.addEventListener("keydown", (event) => {
 	if (event.code == "Escape") {
 		closePopup();
