@@ -8,6 +8,7 @@ class MusicPlayer {
 		this.playing = false;
 		this.loop = false;
 		this.audioPlayer = new Audio();
+		this.audioPlayer.crossOrigin = "anonymous";
 		this.willPlayAudio = false;
 		this.playingRecordedAudio = false;
 		this.senseForFinish = false;
@@ -127,7 +128,7 @@ class MusicPlayer {
 		} else if (songUrl.startsWith("https://goofybox-studios.github.io/songs/editor/")) {
 			src = "/players/newPlayer/#song=" + songUrl.slice(49);
 		} else {
-			src = songUrl;
+			src = siteDataURL + songUrl;
 			usesBeepboxPlayer = false;
 		}
 		
