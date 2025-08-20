@@ -136,7 +136,8 @@ class MusicPlayer {
 		
 		document.querySelector("#playerState span").innerText = song.title;
 		
-		const cover = song.cover ?? this.currentAlbum?.cover ?? "/assets/main/Cookie.png";
+		let cover = song.cover ?? this.currentAlbum?.cover;
+		cover = cover ? (siteDataURL + cover) : "/assets/main/Cookie.png";
 		document.querySelector("#playerState img").src = cover;
 		document.querySelector(".music-player-content > img").src = cover;
 		document.querySelector(".music-player-content").style.setProperty("--background-image", "url(" + cover + ")");
@@ -400,7 +401,8 @@ class MusicPlayer {
 			const art = document.createElement("div");
 			art.classList.add("art");
 			const img = document.createElement("img");
-			img.src = song.cover ?? this.currentAlbum?.cover ?? "/assets/main/Cookie.png";
+			let cover = song.cover ?? this.currentAlbum?.cover;
+			img.src = cover ? (siteDataURL + cover) : "/assets/main/Cookie.png";
 			art.appendChild(img);
 			const play = document.createElement("span");
 			play.innerText = "play_arrow";

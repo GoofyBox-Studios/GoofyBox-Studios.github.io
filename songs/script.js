@@ -8,26 +8,16 @@ for (let audio of [...document.querySelectorAll("audio")]) {
 	};
 }
 
-let songsAlbumsLoaded = 0;
 let songs = {};
 let albums = {};
 
-fetch("/songs/songs.json")
-.then((response) => response.json())
-.then((data) => {
-	songs = data;
-	console.log("Loaded - songs");
-	if (++songsAlbumsLoaded != 2) return;
-
-	songsLoaded();
-});
-
-fetch("/songs/albums.json")
-.then((response) => response.json())
-.then((data) => {
-	albums = data;
-	console.log("Loaded - albums");
-	if (++songsAlbumsLoaded != 2) return;
+Promise.all([
+	fetch(siteDataURL + "/songs.json").then((response) => response.json()),
+	fetch(siteDataURL + "/albums.json").then((response) => response.json())
+])
+.then(([songsData, albumsData]) => {
+	songs = songsData;
+	albums = albumsData;
 
 	songsLoaded();
 });
@@ -41,7 +31,7 @@ function songsLoaded() {
 
 	albums["everything"] = {
 		"title": "Everything",
-		"cover": "/assets/music_icons/everything.png",
+		"cover": "/music_icons/everything.png",
 		"songs": Object.keys(songs).sort((a, b) => a.localeCompare(b))
 	};
 
@@ -56,7 +46,7 @@ function songsLoaded() {
 		const art = document.createElement("div");
 		art.classList.add("art");
 		const cover = document.createElement("img");
-		cover.src = album.cover ?? "/assets/main/Cookie.png";
+		cover.src = album.cover ? (siteDataURL + album.cover) : "/assets/main/Cookie.png";
 		art.appendChild(cover);
 		const play = document.createElement("span");
 		play.innerText = "play_arrow";

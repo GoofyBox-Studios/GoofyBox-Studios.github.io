@@ -24,6 +24,8 @@ const global = new (class extends Signaler {
 	}
 })();
 
+const siteDataURL = "https://raw.githubusercontent.com/GoofyBox-Studios/site-data/refs/heads/main";
+
 const sidebar = {};
 sidebar.icons = {
 	Home: {
