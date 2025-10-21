@@ -3,6 +3,7 @@ const paletteResults = document.getElementById("paletteResults");
 const acronymInput = document.getElementById("acronym");
 const popupElement = document.getElementById("popup");
 const suggestAcronyms = document.getElementById("suggest-acronyms");
+const showUnused = document.getElementById("show-unused");
 
 const gviz_url = `https://docs.google.com/spreadsheets/d/14wt42_ZalI5di8zpUFx3WvPWldC_L7SwIbgb_TxOpUk/gviz/tq?tqx=out:json`
 const csv_url = `https://docs.google.com/spreadsheets/d/14wt42_ZalI5di8zpUFx3WvPWldC_L7SwIbgb_TxOpUk/export?format=csv`
@@ -153,87 +154,83 @@ fetch(acronyms_url)
 		console.error("Error fetching data:", error);
 	});
 
-function generateAcronyms(name) {
+function generateAcronyms(name, maxLen = 4) {
+	if (!name || !name.trim()) return [];
+	maxLen = Math.max(2, Math.floor(maxLen) || 4);
 	const stopWords = new Set(["the", "of", "in", "and", "a", "an", "to"]);
-	const words = name.trim().split(/\s+/);
-	const filteredWords = words.filter(w => !stopWords.has(w.toLowerCase()));
 
-	function upper(word) {
-		return word.toUpperCase();
+	const raw = name.trim().split(/\s+/).map(w => w.replace(/[^A-Za-z0-9]/g, "")).filter(Boolean);
+	const lower = raw.map(w => w.toLowerCase());
+	const words = raw.map(w => w.toUpperCase());
+
+	const results = new Set();
+
+	function push(a) {
+		if (!a) return;
+		const s = a.toUpperCase();
+		if (s.length >= 2 && s.length <= maxLen) results.add(s);
 	}
 
-	function consonants(word) {
-		return [...upper(word)].filter(c => !"AEIOU".includes(c)).join("");
-	}
+	const initials = words.map(w => w[0]);
+	const filteredInitials = words.filter((_, i) => !stopWords.has(lower[i])).map(w => w[0]);
 
-	function vowels(word) {
-		return [...upper(word)].filter(c => "AEIOU".includes(c)).join("");
-	}
-
-	const allConsonants = words.map(consonants);
-	const initials = words.map(w => upper(w[0]));
-	const filteredInitials = filteredWords.map(w => upper(w[0]));
-
-	const acronyms = [];
-	const seen = new Set();
-
-	function add(acronym) {
-		if (acronym.length > 1 && !seen.has(acronym)) {
-			acronyms.push(acronym);
-			seen.add(acronym);
-		}
-	}
-
-	add(filteredInitials.join(""));
-	add(initials.join(""));
+	push(filteredInitials.join(""));
+	push(initials.join(""));
 
 	for (let i = 0; i < initials.length; i++) {
 		for (let j = 0; j < initials.length; j++) {
-			if (i !== j) {
-				add(initials[i] + initials[j]);
-			}
+			if (i === j) continue;
+			push(initials[i] + initials[j]);
 		}
 	}
 
-	for (const word of words) {
-		const up = upper(word);
-		for (let i = 0; i < up.length - 1; i++) {
-			add(up[i] + up[i + 1]);
-		}
-		const cons = consonants(word);
-		for (let i = 0; i < cons.length - 1; i++) {
-			add(cons[i] + cons[i + 1]);
-		}
-		const vow = vowels(word);
-		if (vow.length > 0 && cons.length > 0) {
-			add(cons[0] + vow[0]);
-			add(vow[0] + cons[0]);
-		}
+	function consonants(w) { return [...w].filter(c => !"AEIOU".includes(c)).join(""); }
+
+	for (const w of words) {
+		for (let len = 2; len <= Math.min(maxLen, w.length); len++) push(w.slice(0, len));
+		for (let i = 0; i < w.length - 1; i++) push(w[i] + w[i + 1]);
+		const cons = consonants(w);
+		if (cons) for (let len = 2; len <= Math.min(maxLen, cons.length); len++) push(cons.slice(0, len));
 	}
 
-	function cartesianProduct(arrays) {
-		return arrays.reduce((a, b) => {
-			const result = [];
-			for (const x of a) {
-				for (const y of b) {
-					result.push(x + y);
+	const prefixes = words.map(w => {
+		const opts = [];
+		const max = Math.min(3, w.length);
+		for (let i = 1; i <= max; i++) opts.push(w.slice(0, i));
+		return opts;
+	});
+
+	function cartesian(arrs) {
+		return arrs.reduce((acc, arr) => {
+			const out = [];
+			for (const a of acc) for (const b of arr) out.push(a + b);
+			return out;
+		}, [""]);
+	}
+
+	const combos = cartesian(prefixes).map(s => s).filter(s => s.length >= 2 && s.length <= maxLen);
+	for (const c of combos) push(c);
+
+	for (let i = 0; i < words.length; i++) {
+		for (let j = 0; j < words.length; j++) {
+			if (i === j) continue;
+			for (let li = 1; li <= Math.min(3, words[i].length); li++) {
+				for (let lj = 1; lj <= Math.min(3, words[j].length); lj++) {
+					const a = words[i].slice(0, li) + words[j].slice(0, lj);
+					push(a);
 				}
 			}
-			return result;
-		});
+		}
 	}
 
-	const consonantCombos = cartesianProduct(allConsonants.map(s => [...s].slice(0, 2)));
-	for (const combo of consonantCombos) {
-		add(combo.slice(0, 3));
+	for (let i = 0; i < words.length; i++) {
+		const others = words.slice(0, i).concat(words.slice(i + 1));
+		const joined = words[i] + others.join("");
+		const cons = consonants(joined);
+		for (let len = 2; len <= Math.min(maxLen, cons.length); len++) push(cons.slice(0, len));
 	}
 
-	const joined = allConsonants.join("");
-	for (let i = 2; i <= Math.min(joined.length, 4); i++) {
-		add(joined.slice(0, i));
-	}
-
-	return acronyms;
+	return Array.from(results);
 }
 
 function openPopup(item) {
@@ -300,7 +297,8 @@ function updateAcronyms() {
 	if (suggestAcronyms.checked) {
 		const input = acronymInput.value.trim();
 
-		const suggestions = input ? generateAcronyms(input).filter(acr => acr.length >= 2 && acr.length <= 4).sort((a, b) => names.has(a) - names.has(b)) : [];
+		const maxLength = 4;
+		const suggestions = !input ? [] : generateAcronyms(input, maxLength).filter(acr => acr.length >= 2 && acr.length <= maxLength).sort((a, b) => names.has(a) - names.has(b));
 
 		if (suggestions.length === 0) {
 			const p = document.createElement("p");
@@ -328,16 +326,45 @@ function updateAcronyms() {
 	
 			frag.appendChild(div);
 		}
+	} else if (showUnused.checked) {
+		const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		const suggestions = [];
+		for (let x of chars) {
+			for (let y of chars) {
+				suggestions.push(x + y);
+			}
+		}
+
+		for (let acr of suggestions) {
+			const available = !names.has(acr);
+
+			const div = document.createElement("div");
+			if (!available) div.addEventListener("click", () => {
+				openPopup(acronymData[acr]);
+			});
+			div.classList.add(available ? "state-available" : "state-claimed");
+	
+			const span = document.createElement("span");
+			span.innerText = acr;
+			div.appendChild(span);
+	
+			const desc = document.createElement("span");
+			desc.innerText = available ? "Available" : "Claimed";
+			div.appendChild(desc);
+	
+			frag.appendChild(div);
+		}
 	} else {
-		const searchRegex = new RegExp(acronymInput.value.toUpperCase().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+		const acronymSearchRegex = new RegExp(acronymInput.value.toUpperCase().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+		const nameSearchRegex = new RegExp(acronymInput.value.split("").join(".*?"), "i");
 
 		let added = false;
 		for (let acronym of names) {
-			if (!searchRegex.test(acronym)) continue;
-			added = true;
-	
 			const item = acronymData[acronym];
-	
+
+			if (!acronymSearchRegex.test(acronym) && !nameSearchRegex.test(item[1])) continue;
+			added = true;
+
 			const div = document.createElement("div");
 			div.addEventListener("click", () => {
 				openPopup(item);
@@ -361,7 +388,7 @@ function updateAcronyms() {
 			p.style.display = "block";
 			p.style.alignSelf = "center";
 			p.style.textAlign = "center";
-			acronymResults.appendChild(p);
+			frag.appendChild(p);
 			return;
 		}
 	}
@@ -402,6 +429,7 @@ function nextPalette() {
 
 acronymInput.addEventListener("input", updateAcronyms);
 suggestAcronyms.addEventListener("input", updateAcronyms);
+showUnused.addEventListener("input", updateAcronyms);
 document.body.addEventListener("keydown", (event) => {
 	if (event.code == "Escape") {
 		closePopup();
