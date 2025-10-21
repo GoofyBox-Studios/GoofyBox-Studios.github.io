@@ -116,7 +116,8 @@ label {
 	align-self: center;
 }
 
-#loaded {
+#bar {
+	height: 32px;
 	background: #d1d1d1;
 	border: 1px solid #ccc;
 	border-radius: 6px;
@@ -148,14 +149,19 @@ label {
 	}
 }
 
-#results {
+#columns {
 	display: grid;
 	grid-auto-columns: minmax(0, 1fr);
 	grid-auto-flow: column;
 	column-gap: 8px;
 }
 
-#acronymResults {
+#column {
+	height: 80%;
+	position: relative;
+}
+
+#left-column {
 	grid-column-end: span 2;
 }
 
@@ -210,7 +216,7 @@ label {
 	& .notice {
 		color: #d1d1d1;
 		overflow: hidden;
-		font-size: 0.8em;
+		font-size: 0.7em;
 		justify-content: center;
 	}
 }
@@ -236,7 +242,13 @@ label {
 		padding-right: 16px;
 		margin: 0;
 		border-bottom: 1px solid #444;
-		
+
+		& h1 {
+			text-wrap: nowrap;
+			max-width: 600px;
+			overflow: hidden;
+		}
+
 		& .bubble {
 			margin-left: auto;
 			margin-right: 8px;
@@ -300,11 +312,12 @@ label {
 		background: #121212;
 		color: #e0e0e0;
 	}
-	#loaded, #results {
+	#bar, #columns {
 		background: #1e1e1e;
 		border-color: #444;
+		color: #fff;
 	}
-	#results > div {
+	#columns > div {
 		color: black;
 	}
 	#popup {

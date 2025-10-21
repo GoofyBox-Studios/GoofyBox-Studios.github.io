@@ -10,22 +10,35 @@
 	</head>
 	<body>
 		<h1>Region Lease</h1>
+
+		<div id="columns">
+			<div id="left-column column">
+				<div id="bar">
+					<input type="text" id="acronym">
 		
-		<div id="loaded">
-			<input type="text" id="acronym">
-			<label for="suggest-acronyms">Suggest Acronyms:</label>
-			<input type="checkbox" id="suggest-acronyms" />
-		</div>
+					<label for="suggest-acronyms">Suggest Acronyms:</label>
+					<input type="checkbox" id="suggest-acronyms" />
 		
-		<div id="results">
-			<div id="acronymResults">
-				<p class="loading">Loading...</p>
+					<label for="show-unused">Show Unused:</label>
+					<input type="checkbox" id="show-unused" />
+				</div>
+
+				<div id="acronymResults">
+					<p class="loading">Loading...</p>
+				</div>
 			</div>
-			<div id="paletteResults">
-				<p class="loading">Loading...</p>
+
+
+			<div id="right-column column">
+				<div id="bar">
+				</div>
+
+				<div id="paletteResults">
+					<p class="loading">Loading...</p>
+				</div>
 			</div>
 		</div>
-		
+
 		<div id="popup" class=hidden>
 			<div class="header state-0">
 				<h1>
@@ -35,26 +48,23 @@
 				<span class="bubble">Released (1.9)</span>
 				<button onclick="closePopup()">X</button>
 			</div>
-			
+
 			<div class="content">
 				<div class="section">
 					<h2>Author</h2>
 					<ul id="author">
-						<li>Videocult</li>
 					</ul>
 				</div>
-		
+
 				<div class="section">
 					<h2>Subregions</h2>
 					<ul id="subregions">
 					</ul>
 				</div>
-		
+
 				<div class="section">
 					<h2>Connections</h2>
 					<ul id="connections">
-						<li>SU to SH</li>
-						<li>SU to DS</li>
 					</ul>
 				</div>
 			</div>
