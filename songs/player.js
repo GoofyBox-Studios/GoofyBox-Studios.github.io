@@ -127,6 +127,8 @@ class MusicPlayer {
 			src = "/players/player/#song=" + songUrl.slice(30);
 		} else if (songUrl.startsWith("https://goofybox-studios.github.io/songs/editor/")) {
 			src = "/players/newPlayer/#song=" + songUrl.slice(49);
+		} else if (songUrl.startsWith("https://slarmoo.github.io/slarmoosbox/website/")) {
+			src = "/players/slarmoo/#song=" + songUrl.slice(47);
 		} else {
 			src = siteDataURL + songUrl;
 			usesBeepboxPlayer = false;
