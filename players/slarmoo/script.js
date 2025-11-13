@@ -26955,6 +26955,9 @@ var beepbox = function(t) {
     Object.defineProperty(t, "st", {
         value: !0
     }),
+    t.startPlaying = dn,
+    t.main = ve,
+    t.edit = xe,
     t
 }({});
 //# sourceMappingURL=beepbox_player.min.js.map
