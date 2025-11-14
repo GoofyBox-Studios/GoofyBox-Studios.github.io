@@ -164,12 +164,15 @@ class MusicPlayer {
 			this.playingRecordedAudio = false;
 			this.senseForFinish = true;
 
-			const beepbox = this.getBeepbox()?.main;
+			if (this.iframe?.contentWindow?.sampleLoadEvents) {
+				this.iframe.contentWindow.sampleLoadEvents.addEventListener("sampleloaded", (a, b) => {
+					if (a != b) return;
 
-			if (!beepbox) return;
-
-			beepbox.snapToStart();
-			beepbox.play();
+					this.playBeepBoxFromBeginning();
+				});
+			} else {
+				this.playBeepBoxFromBeginning();
+			}
 		} else {
 			this.audioPlayer.src = src;
 			this.willPlayAudio = true;
@@ -183,6 +186,14 @@ class MusicPlayer {
 
 			this.getBeepbox().main.pause();
 		}
+	}
+
+	playBeepBoxFromBeginning() {
+		const beepbox = this.getBeepbox()?.main;
+		if (!beepbox) return;
+
+		beepbox.snapToStart();
+		beepbox.play();
 	}
 
 	restartSong() {
