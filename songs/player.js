@@ -116,28 +116,28 @@ class MusicPlayer {
 		let editSrc = "";
 		if (songUrl.startsWith("https://jummb.us/")) {
 			src = "/players/playerv6/#" + songUrl.slice(18);
-			editSrc = "https://goofybox-studios.github.io/songs/editor/" + songUrl.slice(18);
+			editSrc = "https://goofybox-studios.github.io/songs/editor/#" + songUrl.slice(18);
 		} else if (songUrl.startsWith("https://goofybox.glitch.me/goofybox/")) {
 			src = "/players/newPlayer/#song=" + songUrl.slice(37);
-			editSrc = "https://goofybox-studios.github.io/songs/editor/" + songUrl.slice(37);
+			editSrc = "https://goofybox-studios.github.io/songs/editor/#" + songUrl.slice(37);
 		} else if (songUrl.startsWith("https://goofybox.glitch.me/goofybox")) {
 			src = "/players/newPlayer/#song=" + songUrl.slice(36);
-			editSrc = "https://goofybox-studios.github.io/songs/editor/" + songUrl.slice(36);
+			editSrc = "https://goofybox-studios.github.io/songs/editor/#" + songUrl.slice(36);
 		} else if (songUrl.startsWith("https://goofybox.glitch.me/songs/editor/")) {
 			src = "/players/newPlayer/#song=" + songUrl.slice(41);
-			editSrc = "https://goofybox-studios.github.io/songs/editor/" + songUrl.slice(41);
+			editSrc = "https://goofybox-studios.github.io/songs/editor/#" + songUrl.slice(41);
 		} else if (songUrl.startsWith("https://goofybox.glitch.me/songs/editor")) {
 			src = "/players/newPlayer/#song=" + songUrl.slice(40);
-			editSrc = "https://goofybox-studios.github.io/songs/editor/" + songUrl.slice(40);
+			editSrc = "https://goofybox-studios.github.io/songs/editor/#" + songUrl.slice(40);
 		} else if (songUrl.startsWith("https://jummbus.bitbucket.io/")) {
 			src = "/players/player/#song=" + songUrl.slice(30);
-			editSrc = "https://goofybox-studios.github.io/songs/editor/" + songUrl.slice(30);
+			editSrc = "https://goofybox-studios.github.io/songs/editor/#" + songUrl.slice(30);
 		} else if (songUrl.startsWith("https://goofybox-studios.github.io/songs/editor/")) {
 			src = "/players/newPlayer/#song=" + songUrl.slice(49);
-			editSrc = "https://goofybox-studios.github.io/songs/editor/" + songUrl.slice(49);
+			editSrc = "https://goofybox-studios.github.io/songs/editor/#" + songUrl.slice(49);
 		} else if (songUrl.startsWith("https://slarmoo.github.io/slarmoosbox/website/")) {
 			src = "/players/slarmoo/#song=" + songUrl.slice(47);
-			editSrc = "https://slarmoo.github.io/slarmoosbox/website/" + songUrl.slice(47);
+			editSrc = "https://slarmoo.github.io/slarmoosbox/website/#" + songUrl.slice(47);
 		} else {
 			src = siteDataURL + songUrl;
 			usesBeepboxPlayer = false;
