@@ -26958,6 +26958,7 @@ var beepbox = function(t) {
     t.startPlaying = dn,
     t.main = ve,
     t.edit = xe,
+    t.sampleLoadEvents = s,
     t
 }({});
 //# sourceMappingURL=beepbox_player.min.js.map
