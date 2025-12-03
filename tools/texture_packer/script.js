@@ -37,6 +37,7 @@ async function packTextures(outputName) {
 	let right = 0;
 	let bottom = 0;
 
+	let endAreas = [];
 	let areas = [
 		{ x: 0, y: 0, width: totalWidth, height: totalHeight },
 	];
@@ -74,6 +75,7 @@ async function packTextures(outputName) {
 			}
 		}
 
+		endAreas.push({ x: area.x, y: area.y, width: image.width, height: image.height });
 		areas.splice(areas.indexOf(area), 1);
 		console.log("placed image ", area.x, "x", area.y);
 		image.x = area.x;
@@ -101,7 +103,7 @@ async function packTextures(outputName) {
 		"meta": {},
 	};
 
-	// areas.forEach((area) => {
+	// endAreas.forEach((area) => {
 	// 	ctx.fillStyle = "rgb(" + Math.floor(Math.random() * 128 + 128) + ", " + Math.floor(Math.random() * 128 + 128) + ", " + Math.floor(Math.random() * 128 + 128) + ")";
 	// 	ctx.fillRect(area.x, area.y, area.width, area.height);
 	// });
@@ -109,7 +111,7 @@ async function packTextures(outputName) {
 	images.forEach((img, index) => {
 		ctx.drawImage(img.img, img.x, img.y);
 
-		spriteData.frames[files[index].name] = {
+		spriteData.frames[img.file.name] = {
 			"frame": { "x": img.x, "y": img.y, "w": img.width, "h": img.height },
 			"rotated": false,
 			"trimmed": false,
