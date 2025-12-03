@@ -1,8 +1,10 @@
 function pickArea(areas, image) {
-	let validAreas = areas.filter(area => (area.width >= image.width && area.height >= image.height));
+	let validAreas = areas.filter(area => (area.width >= image.width && area.height >= image.height)).map(a => {
+		return [a, Math.max(image.width / a.width, image.height / a.height)];
+	});
 	if (validAreas.length == 0) return null;
 
-	return validAreas[0];
+	return validAreas.reduce((m, c) => (c[1] > m[1] ?? -1000) ? c : m)[0];
 }
 
 function expand(x) {
