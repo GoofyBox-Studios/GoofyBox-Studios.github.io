@@ -1,0 +1,23 @@
+body {
+	font-family: system-ui, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	color: #f0f0f0;
+	background: #191a1b;
+}
+
+a {
+	color: rgb(0, 183, 255);
+}
+
+#outputCanvas {
+	image-rendering: pixelated;
+	transform-origin: top left;
+	width: 50vw;
+	border: 1px solid black;
+	margin-top: 20px;
+	background-color: #eee;
+	background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc), linear-gradient(45deg, #ccc 25%, #eee 25%, #eee 75%, #ccc 75%, #ccc);
+	background-size: 16px 16px;
+	background-position: 0 0, 8px 8px;
+}
