@@ -170,13 +170,13 @@ fetch(acronyms_url)
 						
 						paletteData.used = used;
 						paletteData.available = [];
-						paletteData.generator = getUnusedGroups(paletteData.used, 590);
+						paletteData.generator = getUnusedGroups(paletteData.used, 647);
 
 						loaded = true;
 						updateAcronyms();
 						updatePalettes();
 
-						setInterval(nextPalette, 50);
+						setInterval(nextPalette, 20);
 					});
 			})
 			.catch((error) => {
@@ -445,10 +445,10 @@ function updatePalettes() {
 
 	paletteResults.replaceChildren();
 
-	const p = document.createElement("div");
-	p.innerText = "Palette numbers start at 590 since everything before is claimed";
-	p.classList.add("notice");
-	paletteResults.appendChild(p);
+	// const p = document.createElement("div");
+	// p.innerText = "Palette numbers start at 647 since everything before is claimed";
+	// p.classList.add("notice");
+	// paletteResults.appendChild(p);
 }
 
 function nextPalette() {
