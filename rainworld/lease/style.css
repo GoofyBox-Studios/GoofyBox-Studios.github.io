@@ -165,8 +165,14 @@ label {
 	grid-column-end: span 2;
 }
 
+#paletteResults {
+	grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)) !important;
+}
+
 #paletteResults div {
 	justify-content: center;
+	width: 40px !important;
+	height: 40px !important;
 }
 
 #acronymResults, #paletteResults {
@@ -218,6 +224,7 @@ label {
 		overflow: hidden;
 		font-size: 0.7em;
 		justify-content: center;
+		width: 100%;
 	}
 }
 
