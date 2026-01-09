@@ -38,6 +38,36 @@ const acronymData = {
 	UG: ["UG", "Undergrowth", "", "MSC Team", 0],
 	CL: ["CL", "Silent Construct", "Frosted Cathedral, The Husk, Five Pebbles", "MSC Team", 0],
 	HR: ["HR", "Rubicon", "", "MSC Team", 0],
+	WARF: ["WARF", "Aether Ridge", "", "The Watcher", 0],
+	WRFA: ["WRFA", "Coral Caves", "", "The Watcher", 0],
+	WSKA: ["WSKA", "Torrential Railways", "", "The Watcher", 0],
+	WSKB: ["WSKB", "Sunbaked Alley", "", "The Watcher", 0],
+	WARG: ["WARG", "The Surface", "", "The Watcher", 0],
+	WBLA: ["WBLA", "Badlands", "", "The Watcher", 0],
+	WRFB: ["WRFB", "Turbulent Pump", "", "The Watcher", 0],
+	WRRA: ["WRRA", "Rusted Wrecks", "", "The Watcher", 0],
+	WSKD: ["WSKD", "Shrouded Stacks", "", "The Watcher", 0],
+	WTDA: ["WTDA", "Torrid Desert", "", "The Watcher", 0],
+	WARD: ["WARD", "Cold Storage", "", "The Watcher", 0],
+	WARE: ["WARE", "Heat Ducts", "", "The Watcher", 0],
+	WTDB: ["WTDB", "Desolate Tract", "", "The Watcher", 0],
+	WVWA: ["WVWA", "Verdant Waterways", "", "The Watcher", 0],
+	WSKC: ["WSKC", "Stormy Coast", "", "The Watcher", 0],
+	WARB: ["WARB", "Salination", "", "The Watcher", 0],
+	WARC: ["WARC", "Fetid Glen", "", "The Watcher", 0],
+	WPTA: ["WPTA", "Signal Spires", "", "The Watcher", 0],
+	WSSR: ["WSSR", "Unfortunate Evolution", "", "The Watcher", 0],
+	WARA: ["WARA", "Shattered Terrace", "", "The Watcher", 0],
+	WAUA: ["WAUA", "Ancient Urban", "", "The Watcher", 0],
+	WORA: ["WORA", "Outer Rim", "", "The Watcher", 0],
+	WRSA: ["WRSA", "Daemon", "", "The Watcher", 0],
+	WDSR: ["WDSR", "Decaying Tunnels", "", "The Watcher", 0],
+	WGWR: ["WGWR", "Infested Wastes", "", "The Watcher", 0],
+	WHIR: ["WHIR", "Corrupted Factories", "", "The Watcher", 0],
+	WSUR: ["WSUR", "Crumbing Fringes", "", "The Watcher", 0],
+	WPGA: ["WPGA", "Pillar Grove", "", "The Watcher", 0],
+	WMPA: ["WMPA", "Migration Path", "", "The Watcher", 0],
+	WVWB: ["WVWB", "Fractured Gateways", "", "The Watcher", 0],
 };
 const connectionData = {};
 
@@ -79,7 +109,9 @@ fetch(acronyms_url)
 			if (!key) continue;
 
 			entry[4] = states.indexOf(entry[4]);
-			acronymData[key] = entry;
+			if (!(key in acronymData)) {
+				acronymData[key] = entry;
+			}
 			names.add(key);
 		}
 
@@ -94,6 +126,7 @@ fetch(acronyms_url)
 					
 					if (!entry[1] || !entry[2]) continue;
 					
+					if (region == null) console.log(entry);
 					if (!connectionData[region[0]]) connectionData[region[0]] = [];
 					
 					entry[3] = entry[3].trim().replace("\n", " ");
@@ -103,7 +136,7 @@ fetch(acronyms_url)
 
 					let toRegion = Object.values(acronymData).filter((i) => i[1] == entry[3])[0];
 					if (!toRegion) {
-						console.warn("Cannot find region: '" + entry[3] + "'");
+						// console.warn("Cannot find region: '" + entry[3] + "'");
 						continue;
 					}
 					if (!connectionData[toRegion[0]]) connectionData[toRegion[0]] = [];
