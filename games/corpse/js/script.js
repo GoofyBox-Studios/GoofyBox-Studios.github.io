@@ -11,10 +11,10 @@ var currentLevel = 0;
 var mode = -1;
 
 // var keyMap = {
-//   jump: " ",
-//   up: "ArrowUp",
-//   left: "ArrowLeft",
-//   right: "ArrowRight"
+// 	jump: " ",
+// 	up: "ArrowUp",
+// 	left: "ArrowLeft",
+// 	right: "ArrowRight"
 // }
 
 function loadLevel(l) {
@@ -534,8 +534,8 @@ function _mainLoop() {
 					ctx.font = 32 / 6 + "px Pixel";
 					ctx.fillText("Made by:", canvas.width / 2, 320 - creditsTime / 3);
 					ctx.fillText("Haizlbliek\t\t\tHead of Programming and Chief Debugger", canvas.width / 2, 340 - creditsTime / 3);
-					ctx.fillText("TheLordZephyrus\t\t\tArt Constructer and Game Designer", canvas.width / 2, 350 - creditsTime / 3);
-					ctx.fillText("Judah\t\t\tMusic and Gameplay Consultant", canvas.width / 2, 330 - creditsTime / 3);
+					ctx.fillText("The Lord Zephyrus\t\t\tArt Constructer and Game Designer", canvas.width / 2, 350 - creditsTime / 3);
+					ctx.fillText("Aderrr\t\t\tMusic and Gameplay Consultant", canvas.width / 2, 330 - creditsTime / 3);
 
 					ctx.fillText("Special Thanks to:", canvas.width / 2, 380 - creditsTime / 3);
 					ctx.fillText("All our exccelent play-testers", canvas.width / 2, 390 - creditsTime / 3);
