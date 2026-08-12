@@ -170,13 +170,13 @@ fetch(acronyms_url)
 						
 						paletteData.used = used;
 						paletteData.available = [];
-						paletteData.generator = getUnusedGroups(paletteData.used, 647);
+						paletteData.generator = getUnusedGroups(paletteData.used, 655);
 
 						loaded = true;
 						updateAcronyms();
 						updatePalettes();
 
-						setInterval(nextPalette, 20);
+						setInterval(nextPalette, 10);
 					});
 			})
 			.catch((error) => {
